@@ -1,0 +1,128 @@
+---
+import Base from "../layouts/Base.astro";
+import { site, pillars } from "../data/site.js";
+
+const title = "Tax Advisory for Business Owners & Equity | Advisant";
+const description =
+  "Employer equity planning, tax strategy for business owners, and family office services from enrolled agents in Metro Detroit and Denver.";
+const equity = pillars[0], owners = pillars[1];
+---
+<Base title={title} description={description} path="/tax-advisory/">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero__grid">
+        <div>
+          <p class="formline formline--onDark">Advisory</p>
+          <h1>Most tax advice arrives too late to matter.</h1>
+          <p>
+            By the time a return is being prepared, the decisions that moved the number were
+            made months earlier — the exercise, the election, the distribution, the sale. We
+            work on the side of that line where choices still exist.
+          </p>
+          <div class="hero__actions">
+            <a class="btn" href="/contact/">New client application</a>
+            <a class="btn btn--ghost" href="/family-office/">Family office services</a>
+          </div>
+        </div>
+        <aside class="credential">
+          <div class="credential__seal" aria-hidden="true">EA</div>
+          <h2>Planning first, filing second.</h2>
+          <p>
+            Compliance is table stakes and we do it well. It is not why owners and equity
+            holders hire us.
+          </p>
+          <dl>
+            <dt>Focus</dt><dd>Owners, equity, families</dd>
+            <dt>Cadence</dt><dd>Year-round, not seasonal</dd>
+            <dt>Credential</dt><dd>Enrolled Agent (IRS)</dd>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id={equity.slug}>
+    <div class="wrap split">
+      <div class="prose">
+        <p class="formline">Employer equity</p>
+        <h2>{equity.title}</h2>
+        <p>{equity.lede}</p>
+        <p>
+          Equity compensation punishes people who wait. The alternative minimum tax on an
+          incentive stock option exercise is calculated on a spread the holder never received
+          in cash. An 83(b) election is worthless on day 31. Qualified small business stock
+          requires facts that must be true at issuance, not assembled at sale. None of these
+          are fixable at filing.
+        </p>
+        <p>
+          We model exercises against your full picture — other income, state residency,
+          expected liquidity — and tell you what a given decision costs before you make it.
+          Where a client is holding options through a company transaction, we work alongside
+          their attorney rather than reacting to the closing documents afterward.
+        </p>
+        <h3>What this covers</h3>
+        <ul>{equity.points.map((x) => <li>{x}</li>)}</ul>
+      </div>
+      <aside class="facts">
+        <p class="formline">Common triggers</p>
+        <ul style="list-style:none;margin:0;padding:0;font-size:.95rem">
+          <li style="padding:.6rem 0;border-bottom:1px solid var(--rule)">A first grant, or a grant you have not exercised</li>
+          <li style="padding:.6rem 0;border-bottom:1px solid var(--rule)">A tender offer or secondary sale</li>
+          <li style="padding:.6rem 0;border-bottom:1px solid var(--rule)">Leaving a company with vested options</li>
+          <li style="padding:.6rem 0">An AMT bill you did not see coming</li>
+        </ul>
+        <a class="btn" href="/contact/">Start a conversation</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="band band--sunk" id={owners.slug}>
+    <div class="wrap split">
+      <div class="prose">
+        <p class="formline">Business owners</p>
+        <h2>{owners.title}</h2>
+        <p>{owners.lede}</p>
+        <p>
+          The questions owners actually face are structural. Whether the entity is still the
+          right one. Whether the salary is defensible. Whether a retirement plan could absorb
+          far more than it currently does. Whether the state election helps this owner group
+          or only some of it. Whether the business is being run in a way that a buyer will pay
+          for in three years.
+        </p>
+        <p>
+          These are not filing-season questions and they cannot be answered from a completed
+          return. We work through them on a calendar that matches when the decisions are
+          actually made — which for most of them is well before December.
+        </p>
+        <h3>What this covers</h3>
+        <ul>{owners.points.map((x) => <li>{x}</li>)}</ul>
+        <p>
+          If a sale is in view, the structural work starts earlier still — see
+          <a href="/business-exit-tax-planning/"> business exit tax planning</a>.
+        </p>
+      </div>
+      <aside class="facts">
+        <p class="formline">Common triggers</p>
+        <ul style="list-style:none;margin:0;padding:0;font-size:.95rem">
+          <li style="padding:.6rem 0;border-bottom:1px solid var(--rule)">Profit that has outgrown the current structure</li>
+          <li style="padding:.6rem 0;border-bottom:1px solid var(--rule)">Hiring in a second or third state</li>
+          <li style="padding:.6rem 0;border-bottom:1px solid var(--rule)">Bringing on or buying out a partner</li>
+          <li style="padding:.6rem 0">A sale within the next three to five years</li>
+        </ul>
+        <a class="btn" href="/contact/">Start a conversation</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap measure">
+      <p class="formline">Also</p>
+      <h2>Family office services</h2>
+      <p>
+        For families running more than one entity, a trust structure, or a philanthropic
+        vehicle, we hold the whole picture rather than a slice of it.
+      </p>
+      <p style="margin-top:1.5rem"><a class="btn" href="/family-office/">Family office services</a></p>
+    </div>
+  </section>
+</Base>

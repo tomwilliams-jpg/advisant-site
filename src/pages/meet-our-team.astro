@@ -1,0 +1,56 @@
+---
+import Base from "../layouts/Base.astro";
+import { team } from "../data/site.js";
+
+const title = "Meet Our Team | Advisant Financial, LLC";
+const description =
+  "Meet the enrolled agents behind Advisant Financial. Both partners are IRS-licensed EAs practising across Metro Detroit, Denver, and all 50 states.";
+---
+<Base title={title} description={description} path="/meet-our-team/">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero__grid">
+        <div>
+          <p class="formline formline--onDark">The firm</p>
+          <h1>Who you will actually be working with.</h1>
+          <p>
+            Advisant is small on purpose. The person who reviews your return is the person
+            you spoke to about it, and the person who will stand behind it if the IRS asks.
+          </p>
+          <div class="hero__actions">
+            <a class="btn" href="/contact/">New client application</a>
+          </div>
+        </div>
+        <aside class="credential">
+          <div class="credential__seal" aria-hidden="true">EA</div>
+          <h2>Two partners, both enrolled agents.</h2>
+          <p>
+            No account managers, no handoffs, no file passed to a third party when a notice
+            arrives.
+          </p>
+          <dl>
+            <dt>Partners</dt><dd>2</dd>
+            <dt>Credential</dt><dd>Enrolled Agent (IRS)</dd>
+            <dt>Practice</dt><dd>All 50 states</dd>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap grid grid--2">
+      {team.map((m) => (
+        <article class="person">
+          {m.photo
+            ? <img class="person__photo" src={m.photo} alt={m.name} width="440" height="440" />
+            : <div class="person__monogram" aria-hidden="true">Photo</div>}
+          <h3>{m.name}</h3>
+          <p class="person__role">{m.title}</p>
+          <p>{m.bio}</p>
+          {m.school && <p class="person__school">{m.school}</p>}
+        </article>
+      ))}
+    </div>
+  </section>
+</Base>

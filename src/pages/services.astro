@@ -1,0 +1,75 @@
+---
+import Base from "../layouts/Base.astro";
+import { serviceGroups, michigan, colorado } from "../data/site.js";
+
+const title = "Tax Services | Advisant Financial, LLC";
+const description =
+  "Individual and business tax preparation, year-end planning, IRS and state representation, trust and estate returns, and employer payroll compliance.";
+---
+<Base title={title} description={description} path="/services/">
+  <section class="hero">
+    <div class="wrap">
+      <p class="formline formline--onDark">Services</p>
+      <h1>Advisory first. Compliance done properly.</h1>
+      <p>
+        Preparation records decisions already made. It has to be right, and we treat it
+        that way — but it is not what changes the number. The advisory work is.
+      </p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="ledger">
+        {serviceGroups.map((g) => (
+          <div class="ledger__group">
+            <div class="ledger__head">
+              <h3>{g.group}</h3>
+            </div>
+            {g.items.map((s) => (
+              <div class="ledger__row">
+                <h4>{s.title}</h4>
+                <p>{s.body}</p>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--sunk">
+    <div class="wrap split">
+      <div class="prose">
+        <p class="formline">How engagements run</p>
+        <h2>What working with us looks like</h2>
+        <p>
+          We start by reading your two most recent returns. That is usually faster and more
+          revealing than an intake questionnaire, and it tells us whether there is anything
+          worth amending before we discuss the year ahead.
+        </p>
+        <p>
+          Planning conversations happen before year-end, not in April. By the time a return is
+          being prepared, nearly every lever has already been pulled. Entity elections,
+          retirement plan contributions, timing of recognition, and pass-through elections all
+          have deadlines that precede the filing deadline, sometimes by months.
+        </p>
+        <p>
+          If a notice arrives, we handle it. Enrolled agent status carries unlimited practice
+          rights before the IRS, so representation does not require handing your file to
+          another firm.
+        </p>
+      </div>
+      <aside class="facts">
+        <p class="formline">Two offices</p>
+        <dl>
+          <dt>Michigan</dt>
+          <dd><a href={`/${michigan.slug}/`}>{michigan.metro}</a></dd>
+          <dt>Colorado</dt>
+          <dd><a href={`/${colorado.slug}/`}>{colorado.city}</a></dd>
+        </dl>
+        <a class="btn" href="/contact/">New client application</a>
+      </aside>
+    </div>
+  </section>
+</Base>

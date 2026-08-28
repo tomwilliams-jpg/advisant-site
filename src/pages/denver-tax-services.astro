@@ -1,0 +1,158 @@
+---
+import Base from "../layouts/Base.astro";
+import { site, colorado } from "../data/site.js";
+
+const path = `/${colorado.slug}/`;
+const title = "Tax Advisors in Denver, Colorado | Enrolled Agent Tax Firm";
+const description =
+  "Enrolled agent tax preparation and IRS representation in Denver. SALT Parity Act elections, the Denver Occupational Privilege Tax, and multi-state returns.";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "AccountingService",
+  "@id": `${site.domain}${path}#office`,
+  name: site.gbpName,
+  url: site.domain + path,
+  telephone: colorado.phone,
+  parentOrganization: { "@id": `${site.domain}/#organization` },
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: colorado.suite ? `${colorado.street}, ${colorado.suite}` : colorado.street,
+    addressLocality: colorado.city,
+    addressRegion: colorado.region,
+    postalCode: colorado.postal,
+    addressCountry: "US",
+  },
+  openingHoursSpecification: [{
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+    opens: "09:00", closes: "17:00",
+  }],
+  areaServed: colorado.serviceArea.map((c) => ({
+    "@type": "City", name: c, containedInPlace: { "@type": "State", name: "Colorado" },
+  })),
+};
+---
+<Base title={title} description={description} path={path} schema={schema}>
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="formline formline--onDark">Colorado · Enrolled Agents</p>
+      <h1>Tax advisors in Denver, Colorado.</h1>
+      <p>
+        Our Denver office serves individuals, partnerships, and S corporations across the
+        Front Range, with the same federal representation rights we carry in every state.
+      </p>
+      <div class="hero__actions">
+        <a class="btn" href="/contact/">New client application</a>
+        <a class="btn btn--ghost" href={`tel:${colorado.phone.replace(/\D/g, "")}`}>{colorado.phone}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap split">
+      <div class="prose">
+        <p class="formline">Colorado practice</p>
+        <h2>A flat rate that hides a moving target</h2>
+        <p>
+          Colorado's individual income tax is flat, with taxable income starting from federal
+          taxable income. That makes the arithmetic simple and the planning deceptive. The
+          rate itself moves: the Taxpayer's Bill of Rights requires the state to refund
+          revenue collected above a constitutional cap, and one of the mechanisms is a
+          temporary rate reduction that applies to a single tax year. Projections built on
+          last year's rate are wrong more often than not.
+        </p>
+
+        <h2>The SALT Parity Act election</h2>
+        <p>
+          Colorado permits partnerships and S corporations to elect entity-level taxation,
+          converting a limited itemized deduction into a business deduction at the federal
+          level. Colorado's version is unusually broad — the state has allowed elections
+          reaching back to earlier tax years through amended composite filings, which means
+          the analysis is not only forward-looking. For owner groups that never made the
+          election, there may still be value in the earlier years. We evaluate that as part of
+          onboarding rather than waiting for the next return.
+        </p>
+
+        <h2>Denver's Occupational Privilege Tax</h2>
+        <p>
+          Denver levies a flat monthly head tax rather than a percentage city income tax. Two
+          pieces apply: an employee portion withheld from workers who earn at least $500 in a
+          month for work performed inside city limits, and a business portion paid by the
+          employer for each liable employee. Sole proprietors, partners, and managers owe the
+          business portion for any month they conduct business in Denver, even with no
+          employees and no threshold to clear.
+        </p>
+        <p>
+          Two things trip employers up. Liability follows where the work is physically
+          performed, not where the business or the worker is based, so an out-of-state company
+          sending someone to a Denver job site can owe it. And neighboring cities set their
+          own thresholds and amounts — Glendale, Greenwood Village, and Sheridan each differ,
+          and Aurora repealed its version effective January 2025. Payroll systems configured
+          years ago often still carry the old settings.
+        </p>
+
+        <h2>Colorado employer obligations</h2>
+        <ul>
+          <li>Paid Family and Medical Leave Insurance premiums, split between employer and employee</li>
+          <li>Colorado SecureSavings, the state's mandatory retirement program for employers without a qualifying plan</li>
+          <li>Unemployment insurance, on a wage base that moves most years</li>
+          <li>Local occupational privilege taxes in the four remaining metro cities that impose them</li>
+        </ul>
+
+        <h2>Individuals and households</h2>
+        <p>
+          Colorado's pension and annuity subtraction, the state child tax credit, and the
+          treatment of federally taxed Social Security all differ from what clients arriving
+          from other states expect. For households that moved to Colorado mid-year, the
+          part-year allocation and the credit for tax paid to the former state are where
+          errors concentrate.
+        </p>
+
+        <h2>Working with us</h2>
+        <p>
+          Consultations are available in person at our Denver office or by video. Documents
+          move through an encrypted client portal with e-signature, and returns are filed
+          electronically. If your affairs also touch Michigan, the same team handles both
+          states and the interstate credit between them.
+        </p>
+
+        <p class="areas">
+          Serving {colorado.serviceArea.join(", ")}, and the surrounding {colorado.metro}.
+        </p>
+      </div>
+
+      <aside class="facts">
+        <p class="formline">Denver office</p>
+        <dl>
+          <dt>Address</dt>
+          <dd>
+            {colorado.street}{colorado.suite ? `, ${colorado.suite}` : ""}<br />
+            {colorado.city}, {colorado.region} {colorado.postal}
+          </dd>
+          <dt>Phone</dt>
+          <dd><a href={`tel:${colorado.phone.replace(/\D/g, "")}`}>{colorado.phone}</a></dd>
+          <dt>Hours</dt>
+          <dd>{colorado.hours}</dd>
+          <dt>Credential</dt>
+          <dd>Enrolled Agent (IRS)</dd>
+        </dl>
+        <a class="btn" href="/contact/">New client application</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="band band--sunk">
+    <div class="wrap">
+      <p class="formline">Also</p>
+      <h2>Our Michigan office</h2>
+      <p class="measure">
+        Advisant also practices in Metro Detroit. Clients with income or businesses in both
+        states are handled by one team, not two.
+      </p>
+      <p><a href="/rochester-hills-tax-services/">Michigan tax services &rarr;</a></p>
+    </div>
+  </section>
+
+</Base>

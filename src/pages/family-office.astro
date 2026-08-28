@@ -1,0 +1,145 @@
+---
+import Base from "../layouts/Base.astro";
+import { pillars, compliance } from "../data/site.js";
+
+const title = "Family Office Tax Services | Detroit & Denver | Advisant";
+const description =
+  "Consolidated tax planning across operating entities, holding companies, and trusts for families in Metro Detroit and Denver, from IRS-licensed enrolled agents.";
+const fo = pillars[2];
+---
+<Base title={title} description={description} path="/family-office/">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero__grid">
+        <div>
+          <p class="formline formline--onDark">Family office</p>
+          <h1>One team holding the whole picture.</h1>
+          <p>
+            When a family's affairs span an operating company, a holding entity, a trust or
+            two, and several states, the risk is rarely a single wrong number. It is that no
+            one is looking at all of it at once.
+          </p>
+          <div class="hero__actions">
+            <a class="btn" href="/contact/">New client application</a>
+            <a class="btn btn--ghost" href="/tax-advisory/">Advisory services</a>
+          </div>
+        </div>
+        <aside class="credential">
+          <div class="credential__seal" aria-hidden="true">EA</div>
+          <h2>Built for complexity, not volume.</h2>
+          <p>
+            We take on a limited number of family engagements so that the person who knows
+            your structure is the person answering the phone.
+          </p>
+          <dl>
+            <dt>Scope</dt><dd>Entities, trusts, family</dd>
+            <dt>Cadence</dt><dd>Quarterly, plus as needed</dd>
+            <dt>Coordination</dt><dd>Attorney &amp; advisor</dd>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap split">
+      <div class="prose">
+        <p class="formline">What it is</p>
+        <h2>The problem is fragmentation, not arithmetic</h2>
+        <p>
+          Most families in this position already have good advisors. An attorney who drafted
+          the trusts. An investment advisor managing the portfolio. A preparer filing the
+          returns. Each is competent inside their own lane, and none of them owns the seams.
+        </p>
+        <p>
+          The seams are where the money is. A distribution timed without reference to the
+          owner's other income. A charitable gift made in cash when appreciated stock was
+          sitting in the account. A trust that has been paying tax at compressed rates for
+          years because no one modelled distributing income to beneficiaries instead. An
+          entity that made sense at formation and has been quietly wrong since.
+        </p>
+        <p>
+          Our role is to sit across those seams — to hold the consolidated view, to bring the
+          other advisors into the same conversation, and to raise the question that falls
+          between two people's remits.
+        </p>
+
+        <h2>What we handle</h2>
+        <ul>{fo.points.map((x) => <li>{x}</li>)}</ul>
+
+        <h2>Risk management, because wealth creates exposure</h2>
+        <p>
+          Families in this position face risks that scale with what they own. Wealth attracts
+          claims. Structural complexity — an operating company, rental property, a boat, a
+          teenage driver, a board seat — creates personal liability that sits outside the
+          business and outside most people's coverage. Entity structure, umbrella coverage,
+          and titling either contain that exposure or they do not, and most families have
+          never had anyone look at all three together.
+        </p>
+        <p>
+          We review where liability actually sits, and coordinate with your insurance counsel
+          on the gaps. This is not investment risk; it is the kind that arrives as a lawsuit.
+        </p>
+
+        <h2>Planning across generations, not tax years</h2>
+        <p>
+          A family office exists because the planning horizon is longer than a filing season.
+          The organising question is what transfers, to whom, and in what form — and every
+          annual decision either serves that or works against it.
+        </p>
+        <p>
+          That means gifting on a schedule rather than in a panic, using the annual exclusion
+          and lifetime exemption deliberately, allocating GST exemption where it will do the
+          most work, and structuring charitable giving so appreciated assets rather than cash
+          fund it. It also means the operating business is prepared for transfer or sale years
+          before either happens.
+        </p>
+        <p>
+          It is not what you make. It is what you keep, and what reaches the next generation
+          intact.
+        </p>
+
+        <h2>How engagements run</h2>
+        <p>
+          Family engagements are year-round and priced as such. We start with a structural
+          review: every entity, every trust, the ownership chart, the last two years of
+          returns for each, and a conversation with your attorney. That review usually
+          surfaces two or three things worth acting on before it is finished.
+        </p>
+        <p>
+          From there the cadence is quarterly, with estimated payments and cash-flow managed
+          across the whole structure rather than entity by entity, and a planning session
+          before year-end while elections are still available.
+        </p>
+        <p>
+          We are enrolled agents, which means we can also represent any entity or family
+          member before the IRS directly — in all 50 states, on returns we did not prepare.
+        </p>
+      </div>
+
+      <aside class="facts">
+        <p class="formline">A fit if</p>
+        <ul style="list-style:none;margin:0;padding:0;font-size:.95rem">
+          <li style="padding:.6rem 0;border-bottom:1px solid var(--rule)">You file returns for more than three related entities</li>
+          <li style="padding:.6rem 0;border-bottom:1px solid var(--rule)">A trust holds an interest in the operating business</li>
+          <li style="padding:.6rem 0;border-bottom:1px solid var(--rule)">Your advisors do not talk to each other</li>
+          <li style="padding:.6rem 0;border-bottom:1px solid var(--rule)">Charitable giving is meaningful and unstructured</li>
+          <li style="padding:.6rem 0">A generational transfer is in view</li>
+        </ul>
+        <a class="btn" href="/contact/">Start a conversation</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="band band--sunk">
+    <div class="wrap measure">
+      <p class="formline">Important disclosures</p>
+      <p class="disclosure">{compliance.rlaLine}</p>
+      <p class="disclosure" style="margin-top:1rem">{compliance.taxSeparationLine}</p>
+      <p style="margin-top:1.5rem;font-size:.85rem">
+        <a href={compliance.advUrl}>Form ADV Part 2A</a> &nbsp;&middot;&nbsp;
+        <a href={compliance.crsUrl}>Form CRS</a>
+      </p>
+    </div>
+  </section>
+</Base>

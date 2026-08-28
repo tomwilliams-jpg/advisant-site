@@ -1,0 +1,115 @@
+---
+import Base from "../layouts/Base.astro";
+import { site, michigan, colorado } from "../data/site.js";
+
+const title = "Contact | Advisant Financial, LLC";
+const description =
+  "Reach Advisant Financial's Metro Detroit and Denver offices, start a new client application, or sign in to the secure client portal for existing clients.";
+---
+<Base title={title} description={description} path="/contact/">
+  <section class="hero">
+    <div class="wrap">
+      <p class="formline formline--onDark">Contact</p>
+      <h1>Start with a conversation.</h1>
+      <p>
+        Tell us what changed — a business, an equity grant, a move across state lines, a
+        notice you did not expect. We will tell you whether we are the right firm for it.
+      </p>
+      <div class="hero__actions">
+        <a class="btn" href={site.applyUrl}>New client application</a>
+        <a class="btn btn--ghost" href={site.portalUrl}>Existing client portal</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap grid grid--2">
+      <div class="facts">
+        <p class="formline">{michigan.metro}</p>
+        <dl>
+          <dt>Location</dt><dd>{michigan.city}, {michigan.region}</dd>
+          <dt>Phone</dt><dd><a href={`tel:${michigan.phone.replace(/\D/g,"")}`}>{michigan.phone}</a></dd>
+          <dt>Hours</dt><dd>{michigan.hours}</dd>
+          <dt>Meetings</dt><dd>By appointment</dd>
+        </dl>
+        <a class="btn btn--ghost" href={`/${michigan.slug}/`}>Michigan tax services</a>
+      </div>
+
+      <div class="facts">
+        <p class="formline">{colorado.city}</p>
+        <dl>
+          <dt>Address</dt>
+          <dd>{colorado.street}{colorado.suite ? `, ${colorado.suite}` : ""}<br />{colorado.city}, {colorado.region} {colorado.postal}</dd>
+          <dt>Phone</dt><dd><a href={`tel:${colorado.phone.replace(/\D/g,"")}`}>{colorado.phone}</a></dd>
+          <dt>Hours</dt><dd>{colorado.hours}</dd>
+        </dl>
+        <a class="btn btn--ghost" href={`/${colorado.slug}/`}>Denver tax services</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--sunk">
+    <div class="wrap measure">
+      <p class="formline">How to reach us</p>
+      <h2>By application, not by cold call.</h2>
+      <p>
+        We do not take walk-ins or unscheduled calls. Every engagement starts with the new
+        client application, which asks the handful of questions we need to tell you quickly
+        whether we are a fit and what the work would cost.
+      </p>
+      <p>
+        Existing clients: use the portal for documents, e-signatures, and messages. It is
+        faster than email and it keeps your records encrypted.
+      </p>
+      <p style="margin-top:1.75rem">
+        <a class="btn" href={site.applyUrl}>Start a new client application</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap measure">
+      <p class="formline">General inquiry</p>
+      <h2>Not ready to apply? Send a note.</h2>
+      <p>
+        If you have a question before starting an application, use this form. We read every
+        submission and reply within one business day. For document exchange and anything
+        involving figures or identifying information, use the portal instead — this form is
+        not encrypted.
+      </p>
+
+      <form class="inquiry" method="POST" data-static-form-name="inquiry">
+        <div class="field">
+          <label for="name">Name <span aria-hidden="true">*</span></label>
+          <input id="name" name="name" type="text" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="state">State <span aria-hidden="true">*</span></label>
+          <input id="state" name="state" type="text" autocomplete="address-level1" required />
+        </div>
+        <div class="field">
+          <label for="email">Email <span aria-hidden="true">*</span></label>
+          <input id="email" name="email" type="email" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label for="phone">Phone <span aria-hidden="true">*</span></label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" required />
+        </div>
+        <div class="field">
+          <label for="message">Message <span aria-hidden="true">*</span></label>
+          <textarea id="message" name="message" rows="7" required></textarea>
+        </div>
+        <p class="hp" aria-hidden="true">
+          <label for="company">Company</label>
+          <input id="company" name="company" type="text" tabindex="-1" autocomplete="off" />
+        </p>
+        <button class="btn" type="submit">Send inquiry</button>
+      </form>
+
+      <p style="margin-top:2rem;font-size:.92rem;color:var(--muted)">
+        Prefer to get started? The <a href={site.applyUrl}>new client application</a> collects
+        what we need to quote the work.
+      </p>
+    </div>
+  </section>
+</Base>

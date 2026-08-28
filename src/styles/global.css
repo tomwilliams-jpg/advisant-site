@@ -1,0 +1,424 @@
+/* ── Tokens ─────────────────────────────────────────────── */
+:root {
+  --ink:      #161D2B;   /* text + hairlines — navy-cast, not neutral black */
+  --navy-dp:  #0F2340;   /* footer + portal button: one step under the hero field */
+  --pine:     #173055;   /* deep navy — clearly blue, 13.2:1 under white */
+  --pine-lt:  #21406E;
+  --paper:    #EEF0F4;
+  --paper-2:  #E1E5EC;
+  --blue:     #0074FF;   /* sampled from the logo — brand blue, large areas only */
+  --blue-ink: #005FD1;   /* WCAG AA text/fill variant: 5.1:1 on paper, 5.9:1 under white */
+  --blue-lt:  #4D9BFF;   /* on dark fields */
+  --brass:    #4D9BFF;   /* legacy alias — accents now read blue */
+  --gold:     #0074FF;
+  --gold-dp:  #0059C4;
+  --muted:    #5D6572;
+  --rule:     #C7CDD8;
+
+  --display: "Newsreader", Georgia, serif;
+  --body: "Libre Franklin", system-ui, -apple-system, sans-serif;
+  --label: "Libre Franklin", system-ui, sans-serif;
+
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 16px;
+
+  --measure: 66ch;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --max: 1140px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
+.measure { max-width: var(--measure); }
+
+/* ── Type ───────────────────────────────────────────────── */
+h1, h2, h3 { font-family: var(--display); font-weight: 500; line-height: 1.12; letter-spacing: -0.015em; margin: 0 0 .5em; }
+h1 { font-size: clamp(2.25rem, 5.5vw, 3.75rem); }
+h2 { font-size: clamp(1.65rem, 3.2vw, 2.35rem); margin-top: 0; }
+h3 { font-size: 1.2rem; font-family: var(--body); font-weight: 600; letter-spacing: 0; }
+p { margin: 0 0 1.1em; }
+a { color: var(--pine); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--blue-ink); }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+/* Signature device: a monospaced form-line label, like a tax worksheet header */
+.formline {
+  font-family: var(--label);
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .045em;
+  text-transform: none;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+  margin: 0 0 1.4rem;
+}
+.formline::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+.formline--onDark { color: #A3B5CE; }
+.formline--onDark::after { background: #33507C;}
+
+/* ── Header ─────────────────────────────────────────────── */
+.masthead { border-bottom: 1px solid var(--rule); background: var(--paper); }
+.masthead__inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding-block: 1.1rem; flex-wrap: wrap; }
+.brand { font-family: var(--display); font-size: 1.3rem; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
+.brand span { font-family: var(--label); font-size: .78rem; color: var(--muted); display: block; margin-top: .3rem; }
+.nav { display: flex; align-items: center; gap: .25rem 1.4rem; flex-wrap: wrap; font-size: .93rem; }
+.nav a { color: var(--muted); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+.nav a:hover, .nav a[aria-current="page"] { color: var(--pine); }
+.nav .btn { color: #fff; background: var(--navy-dp); }
+.nav .btn:hover { background: var(--pine); }
+
+.btn {
+  display: inline-block;
+  background: var(--blue-ink);
+  color: #fff;
+  padding: .68rem 1.25rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: .93rem;
+  font-weight: 500;
+  transition: background .18s ease;
+}
+.btn:hover { background: var(--blue); color: #fff; }
+.btn--ghost { background: transparent; color: var(--pine); border: 1px solid var(--rule); }
+.btn--ghost:hover { color: var(--blue-ink); }
+.btn--ghost:hover { background: var(--paper-2); color: var(--pine); }
+
+/* ── Hero ───────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  background: var(--pine);
+  color: #EFF2F7;
+  padding-block: clamp(3.25rem, 7vw, 5rem);
+  overflow: hidden;
+}
+/* A soft directional wash instead of ruling — depth without banding. */
+.hero::before {
+  content: "";
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(120% 90% at 12% 0%, rgba(0,116,255,.18) 0%, transparent 62%),
+    linear-gradient(180deg, rgba(255,255,255,.04) 0%, transparent 45%);
+}
+.hero > .wrap { position: relative; }
+.hero__grid { display: grid; gap: 3rem; align-items: start; }
+@media (min-width: 940px) {
+  .hero__grid { grid-template-columns: minmax(0,1.35fr) minmax(0,.85fr); gap: 4.5rem; }
+}
+/* Heroes without a side panel: keep the measure tight, don't stretch. */
+.hero > .wrap > .measure h1, .hero > .wrap > h1 { max-width: 17ch; }
+.hero h1 { color: #fff; max-width: 21ch; letter-spacing: -0.022em; }
+.hero p { color: #C6D2E2; max-width: 54ch; font-size: 1.1rem; }
+.hero__actions { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 2.25rem; }
+.hero .btn { background: var(--blue); color: #fff; font-weight: 600; }
+.hero .btn:hover { background: var(--blue); color: #fff; }
+.hero .btn--ghost { background: transparent; color: #EFF2F7; border-color: #3B5885; }
+.hero .btn--ghost:hover { background: #21406E; color: #fff; }
+
+/* Two-office strip — the recurring structural motif */
+.offices { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid #33507C; margin-top: clamp(2.5rem, 6vw, 4rem); }
+.offices > * { padding: 1.5rem 0 0; }
+.offices > *:first-child { border-right: 1px solid #33507C; padding-right: 1.5rem; }
+.offices > *:last-child { padding-left: 1.5rem; }
+.offices dt { font-family: var(--label); font-size: .8rem; font-weight: 600; color: #97A9C4; margin-bottom: .45rem; }
+.offices dd { margin: 0; font-size: 1.05rem; color: #EFF2F7; }
+.offices dd a { color: #EFF2F7; }
+@media (max-width: 640px) {
+  .offices { grid-template-columns: 1fr; }
+  .offices > *:first-child { border-right: 0; border-bottom: 1px solid #33507C; padding-right: 0; padding-bottom: 1.5rem; }
+  .offices > *:last-child { padding-left: 0; }
+}
+
+/* ── Sections ───────────────────────────────────────────── */
+.band { padding-block: clamp(3rem, 7vw, 5rem); }
+.band + .band { border-top: 1px solid var(--rule); }
+.band--sunk { background: var(--paper-2); }
+
+.grid { display: grid; gap: 2rem 2.5rem; }
+@media (min-width: 720px) { .grid--2 { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 900px) { .grid--3 { grid-template-columns: repeat(3, 1fr); } }
+
+.card { border-top: 1px solid #9AA4B5; padding-top: 1.15rem; }
+.card h3 { margin-bottom: .4rem; }
+.card p { color: var(--muted); font-size: .97rem; margin: 0; }
+
+.split { display: grid; gap: 2.5rem; }
+@media (min-width: 880px) { .split { grid-template-columns: minmax(0,1.55fr) minmax(0,1fr); gap: 4rem; align-items: start; } }
+
+/* Fact panel — tabular, ledger-like */
+.facts { border: 1px solid var(--rule); background: #fff; padding: 1.65rem 1.6rem; border-radius: var(--r-lg); align-self: start; }
+.facts dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: .55rem 1.25rem; font-size: .95rem; }
+.facts dt { font-family: var(--label); font-size: .82rem; font-weight: 600; color: var(--muted); padding-top: .15rem; }
+.facts dd { margin: 0; font-variant-numeric: tabular-nums lining-nums; }
+.facts .btn { margin-top: 1.5rem; width: 100%; text-align: center; }
+.facts ul li:last-child { padding-bottom: 0; }
+
+.prose h2 { margin-top: 2.5rem; }
+.prose h2:first-child { margin-top: 0; }
+.prose ul { padding-left: 1.15rem; }
+.prose li { margin-bottom: .5rem; }
+
+.areas { font-size: .93rem; color: var(--muted); }
+
+/* ── Footer ─────────────────────────────────────────────── */
+.foot { background: var(--navy-dp); color: #A9B7CC; padding-block: 3rem 2rem; font-size: .92rem; }
+.foot a { color: #D3DDEC; }
+.foot a:hover { color: var(--blue-ink); }
+.foot h4 { font-family: var(--label); font-size: .8rem; font-weight: 600; letter-spacing: .01em; color: #97A1B2; margin: 0 0 .7rem; font-weight: 400; }
+.foot__grid { display: grid; gap: 2rem; }
+@media (min-width: 720px) { .foot__grid { grid-template-columns: repeat(3, 1fr); } }
+.foot ul { list-style: none; margin: 0; padding: 0; }
+.foot li { margin-bottom: .1rem; }
+.foot li a { display: inline-flex; align-items: center; min-height: 40px; }
+.foot__base { border-top: 1px solid #24406B; margin-top: 2.5rem; padding-top: 1.25rem; font-size: .82rem; color: #7E8798; }
+.foot__base p { margin: 0 0 .9rem; }
+.foot__links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.foot__disclosure { font-size: .76rem; line-height: 1.55; max-width: 90ch; color: #6E7789; margin-bottom: 0 !important; }
+
+iframe { max-width: 100%; border: 1px solid var(--rule); border-radius: var(--r-md); }
+
+/* ── Inquiry form ───────────────────────────────────────── */
+.inquiry { margin-top: 2rem; max-width: 34rem; }
+.field { margin-bottom: 1.15rem; }
+.field label {
+  display: block;
+  font-family: var(--label);
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: .45rem;
+}
+.field label span { color: var(--blue-ink); }
+.field input, .field textarea {
+  width: 100%;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: var(--r-sm);
+  padding: .72rem .85rem;
+}
+.field input:focus, .field textarea:focus { border-color: var(--blue-ink); outline: 2px solid var(--blue-ink); outline-offset: 1px; }
+.field textarea { resize: vertical; min-height: 8rem; }
+.inquiry button { border: 0; cursor: pointer; margin-top: .5rem; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* ── Signature: the credential card ─────────────────────── */
+.credential {
+  border: 1px solid #3B5885;
+  box-shadow: 0 0 0 1px #21406E inset, 0 0 0 5px rgba(0,116,255,.14);
+  background: linear-gradient(160deg, #1C3A66 0%, #122748 100%);
+  padding: 2rem 1.85rem 1.7rem;
+  border-radius: var(--r-lg);
+  position: relative;
+}
+.credential::after {
+  content: "";
+  position: absolute; inset: 8px;
+  border: 1px solid rgba(77,155,255,.22);
+  pointer-events: none;
+}
+.credential__seal {
+  width: 48px; height: 48px; border-radius: 50%;
+  border: 1px solid var(--blue-lt);
+  display: grid; place-items: center;
+  font-family: var(--label); font-size: .8rem; font-weight: 700;
+  letter-spacing: .01em; color: var(--blue-lt);
+  margin-bottom: 1.25rem;
+}
+.credential h2 {
+  font-size: 1.32rem; color: #fff; line-height: 1.25;
+  margin: 0 0 .7rem; letter-spacing: -0.01em;
+}
+.credential p { color: #BECBDF; font-size: .935rem; line-height: 1.6; margin: 0 0 1.4rem; }
+.credential dl {
+  margin: 0; display: grid; grid-template-columns: max-content 1fr;
+  gap: .5rem 1.1rem; border-top: 1px solid #3B5885; padding-top: 1.15rem;
+}
+.credential dt {
+  font-family: var(--label); font-size: .82rem; font-weight: 600;
+  color: #9BADCA; padding-top: .06rem;
+}
+.credential dd { margin: 0; font-size: .93rem; color: #E7EDF6; font-variant-numeric: tabular-nums lining-nums; }
+
+/* ── Ledger table (services) ────────────────────────────── */
+/* Grouped service ledger. The three groups encode when the work happens,
+   which is the only distinction a prospect actually cares about. */
+.ledger { margin-top: 2.5rem; }
+.ledger__group + .ledger__group { margin-top: 3.25rem; }
+.ledger__head {
+  border-bottom: 1px solid #9AA4B5; padding-bottom: .6rem;
+}
+.ledger__head h3 {
+  margin: 0; font-family: var(--display); font-weight: 500;
+  font-size: 1.5rem; letter-spacing: -0.015em;
+}
+
+.ledger__row {
+  display: grid; gap: .3rem 3rem;
+  padding: 1.15rem 0;
+  border-bottom: 1px solid var(--rule);
+  transition: background .15s ease;
+}
+@media (min-width: 780px) {
+  .ledger__row { grid-template-columns: minmax(0,270px) minmax(0,58ch); align-items: baseline; }
+}
+.ledger h4 {
+  margin: 0; font-family: var(--body); font-weight: 600;
+  font-size: 1.02rem; letter-spacing: 0; color: var(--ink);
+}
+.ledger p { margin: 0; color: #4A5261; font-size: .97rem; line-height: 1.55; }
+
+/* Brand lockup */
+.brand { display: inline-flex; flex-direction: column; line-height: 1.1; }
+.brand img { height: 40px; width: auto; margin: 0; display: block; }
+.brand span { letter-spacing: .15em; }
+
+@media (max-width: 560px) {
+  .formline { font-size: .74rem; letter-spacing: .02em; }
+  .nav { gap: .1rem 1.05rem; font-size: .88rem; }
+  .masthead__inner { padding-block: .9rem; }
+  .brand img { height: 32px; }
+  .credential { padding: 1.5rem 1.25rem 1.35rem; }
+  .credential dl { grid-template-columns: 1fr; gap: .15rem; }
+  .credential dt { padding-top: .5rem; }
+}
+
+.foot__logo { height: 34px; width: auto; margin-bottom: 1.9rem; display: block; opacity: .92; }
+.masthead { border-bottom: 1px solid var(--rule); }
+
+/* Body links carry the AA-compliant blue; the pure brand blue is reserved for
+   the hero CTA (large text on a large field, where 4.25:1 clears AA Large). */
+.prose a, .measure a, .areas a, .facts a:not(.btn), .ledger a { color: var(--blue-ink); }
+
+/* Inline links that are primary actions on touch: give them a real tap area
+   without turning every inline link into a block. */
+@media (pointer: coarse) {
+  a[href^="tel:"],
+  .facts a:not(.btn),
+  .prose > p > a,
+  .card p > a,
+  .band > .wrap > p > a,
+  .band .prose p > a,
+  .measure > p > a,
+  .foot a { display: inline-flex; align-items: center; min-height: 40px; }
+}
+
+.skip {
+  position: absolute; left: -9999px; top: 0; z-index: 99;
+  background: var(--blue-ink); color: #fff; padding: .7rem 1.1rem; border-radius: var(--r-sm);
+  text-decoration: none; font-size: .9rem;
+}
+.skip:focus { left: .75rem; top: .75rem; color: #fff; }
+
+/* ── Reviews ────────────────────────────────────────────── */
+.reviews { display: grid; gap: 1.75rem; margin-top: 2.5rem; }
+@media (min-width: 820px) { .reviews { grid-template-columns: 1fr 1fr; gap: 2rem 2.5rem; } }
+.review {
+  background: #fff; border: 1px solid var(--rule);
+  border-radius: var(--r-lg); padding: 1.5rem 1.6rem 1.35rem;
+}
+.review p { font-size: 1.02rem; line-height: 1.6; margin: 0 0 .8rem; color: var(--ink); }
+.review footer { font-size: .88rem; color: var(--muted); }
+.stars { color: var(--blue-ink); letter-spacing: .1em; font-size: .95rem; }
+.rating-line {
+  display: flex; align-items: baseline; gap: .75rem; flex-wrap: wrap;
+  font-size: .95rem; color: var(--muted);
+}
+.rating-line strong { font-size: 1.6rem; font-family: var(--display); color: var(--ink); font-weight: 500; }
+
+/* ── FAQ ────────────────────────────────────────────────── */
+.faq { border-top: 1px solid #9AA4B5; margin-top: 2.25rem; }
+.faq details { border-bottom: 1px solid var(--rule); }
+.faq summary {
+  cursor: pointer; list-style: none; padding: 1.15rem 2.5rem 1.15rem 0;
+  font-weight: 600; font-size: 1.05rem; position: relative;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: "+"; position: absolute; right: .25rem; top: 50%;
+  transform: translateY(-50%); font-weight: 400; font-size: 1.35rem; color: var(--blue-ink);
+}
+.faq details[open] summary::after { content: "\2212"; }
+.faq summary:hover { color: var(--blue-ink); }
+.faq .answer { padding: 0 0 1.35rem; margin: 0; color: var(--muted); max-width: 62ch; }
+
+/* ── People ─────────────────────────────────────────────── */
+.person { border-top: 1px solid #9AA4B5; padding-top: 1.6rem; }
+.person__photo {
+  width: 100%; max-width: 240px; aspect-ratio: 1; object-fit: cover; border-radius: var(--r-lg);
+  display: block; margin-bottom: 1.35rem; filter: grayscale(1) contrast(1.04);
+}
+/* Placeholder until real headshots are supplied — deliberately obvious. */
+.person__monogram {
+  width: 100%; max-width: 240px; aspect-ratio: 1;
+  display: grid; place-items: center; margin-bottom: 1.35rem;
+  border: 1px dashed var(--rule); background: #fff; border-radius: var(--r-lg);
+  color: var(--muted); font-size: .85rem; font-weight: 600;
+}
+.person h3 { font-family: var(--display); font-weight: 500; font-size: 1.45rem; margin-bottom: .2rem; }
+.person__role { font-size: .88rem; font-weight: 600; color: var(--blue-ink); margin-bottom: 1rem; }
+.person p { color: #4A5261; }
+.person__school { font-size: .9rem; color: var(--muted); border-top: 1px solid var(--rule); padding-top: .85rem; margin-top: 1.1rem; }
+
+/* ── Statement band — a full-bleed pause between prose sections ── */
+.statement { background: var(--pine); color: #EFF2F7; padding-block: clamp(3.25rem, 7vw, 5rem); position: relative; overflow: hidden; }
+.statement::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(90% 140% at 85% 50%, rgba(0,116,255,.20) 0%, transparent 60%);
+}
+.statement > .wrap { position: relative; }
+.statement blockquote { margin: 0; max-width: 26ch; }
+.statement p {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(1.6rem, 3.4vw, 2.5rem); line-height: 1.24;
+  letter-spacing: -0.018em; color: #fff; margin: 0;
+}
+.statement cite { display: block; margin-top: 1.5rem; font-style: normal; font-size: .92rem; color: #97A9C4; }
+
+/* Rule 206(4)-1 requires this to be clear and prominent, not fine print. */
+.testimonial-disclosure {
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--blue);
+  background: #fff;
+  padding: 1.15rem 1.35rem;
+  margin-top: 2.25rem;
+  font-size: .875rem;
+  line-height: 1.6;
+  color: #4A5261;
+  max-width: 78ch;
+}
+
+/* ── Regulatory disclosure ──────────────────────────────── */
+.foot__base p { margin: 0 0 .85rem; line-height: 1.55; max-width: 92ch; }
+.foot__base p:last-child { margin-bottom: 0; }
+.foot__links { display: flex; gap: 1.5rem; margin-bottom: 1.1rem !important; }
+.foot__links a { font-size: .82rem; }
+.disclosure {
+  font-size: .82rem; line-height: 1.55; color: var(--muted);
+  max-width: 88ch; background: rgba(0,0,0,.028);
+  border-radius: var(--r-md); padding: 1.1rem 1.25rem;
+}
+.disclosure--lead { margin: 1.75rem 0 0; }
+.review footer { font-size: .8rem; color: var(--muted); line-height: 1.45; }
+.statement cite { max-width: 46ch; line-height: 1.5; }

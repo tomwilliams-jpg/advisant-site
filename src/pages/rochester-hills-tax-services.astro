@@ -1,0 +1,155 @@
+---
+import Base from "../layouts/Base.astro";
+import { site, michigan } from "../data/site.js";
+
+const path = `/${michigan.slug}/`;
+const title = "Tax Advisors in Metro Detroit | Enrolled Agents | Advisant";
+const description =
+  "Enrolled agent tax preparation and IRS representation for Metro Detroit. Michigan flow-through entity elections, city income tax, and multi-state returns.";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "AccountingService",
+  "@id": `${site.domain}${path}#office`,
+  name: site.gbpName,
+  url: site.domain + path,
+  telephone: michigan.phone,
+  parentOrganization: { "@id": `${site.domain}/#organization` },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: michigan.city,
+    addressRegion: michigan.region,
+    addressCountry: "US",
+  },
+  openingHoursSpecification: [{
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+    opens: "09:00", closes: "17:00",
+  }],
+  areaServed: michigan.serviceArea.map((c) => ({
+    "@type": "City", name: c, containedInPlace: { "@type": "State", name: "Michigan" },
+  })),
+};
+---
+<Base title={title} description={description} path={path} schema={schema}>
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="formline formline--onDark">Michigan · Enrolled Agents</p>
+      <h1>Tax advisors serving Metro Detroit.</h1>
+      <p>
+        Advisant Financial serves individuals and closely held businesses across Oakland and
+        Macomb counties from {michigan.city}. We meet clients by appointment and work
+        remotely with documents exchanged through our secure portal.
+      </p>
+      <div class="hero__actions">
+        <a class="btn" href="/contact/">New client application</a>
+        <a class="btn btn--ghost" href={`tel:${michigan.phone.replace(/\D/g, "")}`}>{michigan.phone}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap split">
+      <div class="prose">
+        <p class="formline">Michigan practice</p>
+        <h2>What Michigan filers actually get wrong</h2>
+        <p>
+          Michigan looks straightforward on the surface. A single flat individual income tax
+          rate, no county income tax, and a return that fits on two pages. The complications
+          sit underneath, and they are the ones that cost people money.
+        </p>
+
+        <h2>City income tax</h2>
+        <p>
+          More than twenty Michigan municipalities levy their own income tax, including
+          Detroit, Pontiac, Highland Park, Flint, Lansing, and Grand Rapids. Liability follows
+          where the work is performed, not where the taxpayer lives, and the nonresident rate
+          differs from the resident rate. A Rochester Hills resident who spends part of the
+          week at a Detroit office owes Detroit tax on that portion of wages. Employers do not
+          always withhold correctly, particularly since hybrid schedules became normal, and
+          the day-count allocation is the part most preparers skip.
+        </p>
+
+        <h2>The flow-through entity election</h2>
+        <p>
+          Michigan allows partnerships and S corporations to elect to pay income tax at the
+          entity level, shifting a deduction that would otherwise be limited on the owner's
+          Schedule A into a business deduction on the federal return. The election is not
+          automatic, it has payment deadlines that do not match the filing deadline, and it is
+          not advantageous for every owner group. Whether it helps depends on the mix of
+          resident and nonresident owners, other state credits, and the owners' federal
+          position. We model it before recommending it rather than electing by default.
+        </p>
+
+        <h2>Retirement income</h2>
+        <p>
+          Michigan's treatment of pension and retirement income has been in transition, with a
+          restored subtraction phasing in through the 2026 tax year. The rules differ by birth
+          year and by the source of the income, and the phase-in means the correct answer for
+          a given retiree changes from one filing season to the next. Returns prepared from
+          last year's assumptions frequently understate the subtraction.
+        </p>
+
+        <h2>Credits people leave unclaimed</h2>
+        <ul>
+          <li>Homestead property tax credit, where eligibility turns on household resources rather than adjusted gross income</li>
+          <li>Home heating credit, which is filed separately and on a different deadline</li>
+          <li>Michigan's earned income credit, calculated as a percentage of the federal credit</li>
+          <li>Credit for income tax paid to another state, for households working across the Ohio or Indiana line</li>
+        </ul>
+
+        <h2>Business and employer compliance</h2>
+        <p>
+          For Michigan employers we handle withholding registration, sales and use tax
+          returns, unemployment insurance filings, and the annual report to LARA. For firms
+          with remote staff in other states, we work through nexus and registration before it
+          becomes a notice rather than after.
+        </p>
+
+        <h2>Working with us</h2>
+        <p>
+          Our Michigan address is not open for walk-in traffic. Consultations are by
+          appointment, in person or by video, and documents move through an encrypted client
+          portal with e-signature. Most engagements begin with a review of your two most
+          recent returns, which usually tells us more in twenty minutes than an hour of
+          questions would.
+        </p>
+
+        <p class="areas">
+          Serving {michigan.serviceArea.join(", ")}, and the surrounding {michigan.metro} area.
+        </p>
+      </div>
+
+      <aside class="facts">
+        <p class="formline">Michigan office</p>
+        <dl>
+          <dt>Location</dt>
+          <dd>{michigan.city}, {michigan.region}</dd>
+          <dt>Phone</dt>
+          <dd><a href={`tel:${michigan.phone.replace(/\D/g, "")}`}>{michigan.phone}</a></dd>
+          <dt>Hours</dt>
+          <dd>{michigan.hours}</dd>
+          <dt>Meetings</dt>
+          <dd>By appointment</dd>
+          <dt>Credential</dt>
+          <dd>Enrolled Agent (IRS)</dd>
+        </dl>
+        <a class="btn" href="/contact/">New client application</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="band band--sunk">
+    <div class="wrap">
+      <p class="formline">Also</p>
+      <h2>Our Denver office</h2>
+      <p class="measure">
+        Advisant also practices in Colorado. If your household or business spans both states,
+        the same team handles the allocation and the credit for tax paid to the other state.
+      </p>
+      <p><a href="/denver-tax-services/">Denver tax services &rarr;</a></p>
+    </div>
+  </section>
+
+</Base>

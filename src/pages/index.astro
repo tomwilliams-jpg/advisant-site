@@ -1,0 +1,232 @@
+---
+import Base from "../layouts/Base.astro";
+import { site, michigan, colorado, serviceGroups, pillars, reviews, reviewSource, faqs, compliance } from "../data/site.js";
+
+const title = "Tax Advisory Firm | Metro Detroit & Denver | Advisant";
+const description =
+  "Tax advisory firm for business owners, equity holders, and families in Metro Detroit and Denver. Enrolled agents licensed to represent you before the IRS.";
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "AccountingService",
+  "@id": `${site.domain}/#organization`,
+  name: site.gbpName,
+  url: site.domain,
+  description,
+  areaServed: [
+    { "@type": "State", name: "Michigan" },
+    { "@type": "State", name: "Colorado" },
+  ],
+  department: [
+    { "@id": `${site.domain}/${michigan.slug}/#office` },
+    { "@id": `${site.domain}/${colorado.slug}/#office` },
+  ],
+};
+---
+<Base title={title} description={description} path="/" schema={schema} schema2={faqSchema}>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero__grid">
+        <div>
+          <p class="formline formline--onDark">Enrolled Agents &middot; MI &amp; CO</p>
+          <h1>Advice while the decisions are still open.</h1>
+          <p>
+            Advisant Financial is a tax advisory firm for business owners, equity holders,
+            and families in {michigan.metro} and {colorado.city}. We are enrolled agents,
+            licensed to represent you before the IRS in all 50 states.
+          </p>
+          <div class="hero__actions">
+            <a class="btn" href="/contact/">New client application</a>
+            <a class="btn btn--ghost" href="/tax-advisory/">What we advise on</a>
+          </div>
+        </div>
+
+        <aside class="credential">
+          <div class="credential__seal" aria-hidden="true">EA</div>
+          <h2>Two offices. Federal reach.</h2>
+          <p>
+            We file in the states our clients live and work in, and we represent them
+            before the IRS anywhere &mdash; including on returns we did not prepare.
+          </p>
+          <dl>
+            <dt>Michigan</dt>
+            <dd>{michigan.city}, {michigan.region}</dd>
+            <dt>Colorado</dt>
+            <dd>{colorado.city}, {colorado.region}</dd>
+            <dt>Telephone</dt>
+            <dd><a href={`tel:${michigan.phone.replace(/\D/g, "")}`} style="color:inherit">{michigan.phone}</a></dd>
+            <dt>Representation</dt>
+            <dd>All 50 states</dd>
+            <dt>Meetings</dt>
+            <dd>By appointment</dd>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <p class="formline">What we advise on</p>
+      <h2 style="max-width:22ch">Three areas where timing decides the number.</h2>
+      <div class="grid grid--3" style="margin-top:2.75rem">
+        {pillars.map((pl) => (
+          <div class="card">
+            <h3>{pl.title}</h3>
+            <p>{pl.lede}</p>
+            <p style="margin-top:.9rem">
+              <a href={pl.slug === "family-office" ? "/family-office/" : `/tax-advisory/#${pl.slug}`}>
+                Read more &rarr;
+              </a>
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="statement">
+    <div class="wrap">
+      <blockquote>
+        <p>
+          &ldquo;Tom has skillfully navigated all the details.&rdquo;
+        </p>
+        <cite>From a tax client&rsquo;s Google review. No compensation was provided. Not representative of all clients.</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <section class="band band--sunk">
+    <div class="wrap">
+      <p class="formline">What clients say</p>
+      <h2 style="max-width:24ch">A five-star rating across every review we have received.</h2>
+      <p class="rating-line" style="margin-top:1.25rem">
+        <strong>{reviewSource.rating}</strong>
+        <span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span>{reviewSource.count} reviews on Google</span>
+      </p>
+      <p class="disclosure disclosure--lead">{compliance.testimonialDisclosure}</p>
+      <div class="reviews">
+        {reviews.map((r) => (
+          <blockquote class="review">
+            <p>{r.quote}</p>
+            <footer>{r.name ? r.name + " \u2014 " : ""}Client statement, Google review. Tax services. Uncompensated.</footer>
+          </blockquote>
+        ))}
+      </div>
+      <p class="testimonial-disclosure">{compliance.testimonialDisclosure}</p>
+      <p style="margin-top:1.75rem"><a href={reviewSource.url}>{reviewSource.label} &rarr;</a></p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap split">
+      <div class="prose">
+        <p class="formline">The credential</p>
+        <h2>What an enrolled agent can do that others cannot</h2>
+        <p>
+          An enrolled agent is a federally authorized tax practitioner licensed by the U.S.
+          Department of the Treasury. EAs earn the credential by passing a three-part
+          examination on individual, business, and representation matters administered by the
+          IRS, and maintain it through continuing education.
+        </p>
+        <p>
+          The practical difference is representation. Enrolled agents hold unlimited practice
+          rights before the IRS — any state, any return, whether or not we prepared it. That
+          matters most for the clients we work with, because equity events, entity changes,
+          and multi-entity structures are exactly what draws examination.
+        </p>
+        <p>
+          It also means the person who advised on a position is the person who defends it. We
+          do not hand a file to another firm when a notice arrives.
+        </p>
+      </div>
+
+      <aside class="facts">
+        <p class="formline">Who we work with</p>
+        <ul style="list-style:none;margin:0;padding:0;font-size:.95rem">
+          <li style="padding:.6rem 0;border-bottom:1px solid var(--rule)">Owners of closely held businesses</li>
+          <li style="padding:.6rem 0;border-bottom:1px solid var(--rule)">Executives and founders holding equity</li>
+          <li style="padding:.6rem 0;border-bottom:1px solid var(--rule)">Families with entities, trusts, or a foundation</li>
+          <li style="padding:.6rem 0;border-bottom:1px solid var(--rule)">Anyone filing in more than one state</li>
+          <li style="padding:.6rem 0">Employers with remote staff and nexus questions</li>
+        </ul>
+        <a class="btn" href="/contact/">New client application</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <p class="formline">Compliance and representation</p>
+      <h2>The rest of the work, done properly.</h2>
+      <div class="ledger">
+        {serviceGroups.map((g) => (
+          <div class="ledger__group">
+            <div class="ledger__head">
+              <h3>{g.group}</h3>
+            </div>
+            {g.items.map((s) => (
+              <div class="ledger__row">
+                <h4>{s.title}</h4>
+                <p>{s.body}</p>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+      <p style="margin-top:2.5rem"><a href="/services/">Full detail on each service &rarr;</a></p>
+    </div>
+  </section>
+
+  <section class="band band--sunk">
+    <div class="wrap">
+      <p class="formline">Common questions</p>
+      <h2>Before you get in touch</h2>
+      <div class="faq">
+        {faqs.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p class="answer">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap grid grid--2">
+      <div class="prose">
+        <p class="formline">Michigan</p>
+        <h2>{michigan.metro}</h2>
+        <p>
+          Michigan practice covering the flow-through entity election, Detroit and other city
+          income tax filings, and multi-state allocation for households and businesses that
+          cross the state line.
+        </p>
+        <p><a href={`/${michigan.slug}/`}>Michigan tax services &rarr;</a></p>
+      </div>
+      <div class="prose">
+        <p class="formline">Colorado</p>
+        <h2>{colorado.city}</h2>
+        <p>
+          Denver practice covering Colorado's pass-through entity election, the Denver
+          Occupational Privilege Tax, and TABOR-driven changes that shift from year to year.
+        </p>
+        <p><a href={`/${colorado.slug}/`}>Denver tax services &rarr;</a></p>
+      </div>
+    </div>
+  </section>
+
+</Base>

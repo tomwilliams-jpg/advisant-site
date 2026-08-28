@@ -1,0 +1,10 @@
+# Old TaxDome URLs -> new pages (301 permanent)
+/Meet-our-Team    /meet-our-team/              301
+/Meet-our-Team/   /meet-our-team/              301
+/Services         /services/                   301
+/Services/        /services/                   301
+/Contact-Us       /contact/                    301
+/Contact-Us/      /contact/                    301
+/login  https://advisantfinancial.taxdome.com  302
+/app/signup       https://advisantfinancial.taxdome.com/app/signup   302
+/app/*            https://advisantfinancial.taxdome.com/app/:splat   302

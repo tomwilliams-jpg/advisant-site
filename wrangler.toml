@@ -1,0 +1,10 @@
+# Cloudflare Workers Static Assets config.
+# Used when deploying via Workers (Create application → Import a repository).
+# Not needed if you deploy via Cloudflare Pages, but harmless either way.
+
+name = "advisant-site"
+compatibility_date = "2026-08-27"
+
+[assets]
+directory = "./dist"
+not_found_handling = "404-page"
