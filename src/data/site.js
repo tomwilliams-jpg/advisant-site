@@ -16,7 +16,8 @@ export const site = {
   // GBP lists the business as "Advisant Financial" (no LLC). Schema name must
   // match the listing exactly, so gbpName is what feeds structured data.
   gbpName: "Advisant Financial",
-  legalName: "Advisant Financial, LLC",
+  legalName: "Advisant Financial, LLC",   // legal entity — footer copyright and disclosures only
+  // Everything Google can show as a title uses gbpName, which has no "LLC".
   shortName: "Advisant Financial",
   // The branded portal URL is in TaxDome under Settings > Firm settings.
   // Your current one resolves to the old website because a custom domain is
@@ -53,7 +54,7 @@ export const colorado = {
   suite: "#550",
   postal: "80202",
   phone: "(720) 515-0557",
-  hours: "Mon–Fri 8:00am–5:00pm MT, Sat 9:00am–12:00pm", // matches the Denver listing
+  hours: "Mon–Fri 8:00am–5:00pm MT, Sat 9:00am–12:00pm MT", // must match the Denver listing
   mapEmbed: "TODO_GOOGLE_MAPS_EMBED_URL",
   serviceArea: [
     "Denver", "Lakewood", "Aurora", "Englewood", "Littleton",
@@ -71,7 +72,7 @@ export const michigan = {
   regionName: "Michigan",
   metro: "Metro Detroit",
   phone: "(720) 515-0557", // same line as Denver, per firm
-  hours: "Mon–Fri 8:00am–5:00pm ET, Sat 9:00am–12:00pm ET", // must match the Google listing exactly
+  hours: "Mon–Fri 9:00am–5:00pm ET, Sat 9:00am–12:00pm ET", // must match the Michigan listing
   serviceArea: [
     "Rochester Hills", "Rochester", "Troy", "Birmingham",
     "Bloomfield Hills", "Auburn Hills", "Sterling Heights",

@@ -130,7 +130,9 @@ const schema = {
           </blockquote>
         ))}
       </div>
-      <p style="margin-top:1.75rem"><a href={reviewSource.url}>{reviewSource.label} &rarr;</a></p>
+      {reviewSource.url && !reviewSource.url.endsWith("goo.gl/") && (
+        <p style="margin-top:1.75rem"><a href={reviewSource.url}>{reviewSource.label} &rarr;</a></p>
+      )}
     </div>
   </section>
 
