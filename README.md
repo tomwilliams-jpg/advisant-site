@@ -86,3 +86,26 @@ reCAPTCHA without sending your visitors' data to Google.
 
 **Test the form on the `.pages.dev` preview before DNS cutover.** Submit it once and
 confirm the email arrives.
+
+## Stress tests
+
+Run both before every deploy. They check the BUILT output in `dist/`, not the source.
+
+```
+npm run build
+python3 stress-test.py          # HTML nesting, SEO, schema, links, assets, copy rules
+python3 stress-test-render.py   # layout escapes, overflow, tap targets, JS errors, forms
+```
+
+`stress-test.py` catches unclosed and mismatched tags, over-length titles and
+descriptions, duplicate metadata, missing H1 or canonical, invalid JSON-LD, a
+missing FGFOS disclosure, broken internal links, missing images, images without
+alt text, any published scheduling link, and any copy that puts Michigan before
+Colorado.
+
+`stress-test-render.py` loads every page in a real browser at 1280px and 360px and
+flags any element wider than its container (which is how a broken `</div>` shows
+up), horizontal overflow, tap targets under 32px, JavaScript errors, failed
+requests, and it exercises the fit check and the inquiry form.
+
+Both exit non-zero on failure, so they can be wired into CI later.
