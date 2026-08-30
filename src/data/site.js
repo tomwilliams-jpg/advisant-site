@@ -26,9 +26,13 @@ export const site = {
   // No public email by design — inquiries route through the TaxDome application.
   // NOTE: the current /app/signup path is served by TaxDome on your domain and
   // WILL BREAK at DNS cutover. This is the taxdome.com-hosted equivalent.
-  // Verified working. If you would rather send prospects to the TaxDome new-client
-  // application, get that URL from TaxDome and swap it in here.
-  applyUrl: "https://calendly.com/advisantfinancial",
+  // Prospects are routed through /contact/ only — the inquiry form and, when the
+  // URL below is filled in, the new client application. No scheduling link is
+  // published anywhere on the site.
+  // The TaxDome new-client application. TODO: paste the real URL from TaxDome.
+  // While this is null the application button is hidden and the inquiry form is
+  // the single path, so nothing broken ships.
+  applicationUrl: null,
   founded: "TODO_YEAR",
   // The current Contact page states: no walk-ins, no unscheduled calls.
   // Kept below so the site and the Google listings tell the same story.

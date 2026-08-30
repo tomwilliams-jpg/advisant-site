@@ -16,7 +16,7 @@ const description =
         notice you did not expect. We will tell you whether we are the right firm for it.
       </p>
       <div class="hero__actions">
-        <a class="btn" href={site.applyUrl}>Schedule a consultation</a>
+        <a class="btn" href="#inquiry">Send an inquiry</a>
         <a class="btn btn--ghost" href={site.portalUrl}>Existing client portal</a>
       </div>
     </div>
@@ -51,26 +51,28 @@ const description =
   <section class="band band--sunk">
     <div class="wrap measure">
       <p class="formline">How to reach us</p>
-      <h2>By application, not by cold call.</h2>
+      <h2>By inquiry, not by cold call.</h2>
       <p>
-        We do not take walk-ins or unscheduled calls. Every engagement starts with the new
-        client application, which asks the handful of questions we need to tell you quickly
-        whether we are a fit and what the work would cost.
+        We do not take walk-ins or unscheduled calls. Every engagement starts in writing
+        &mdash; the inquiry form below, or the new client application &mdash; which tells us
+        enough to say quickly whether we are a fit and what the work would cost.
       </p>
       <p>
         Existing clients: use the portal for documents, e-signatures, and messages. It is
         faster than email and it keeps your records encrypted.
       </p>
-      <p style="margin-top:1.75rem">
-        <a class="btn" href={site.applyUrl}>Schedule a consultation</a>
-      </p>
+      {site.applicationUrl && (
+        <p style="margin-top:1.75rem">
+          <a class="btn" href={site.applicationUrl}>New client application</a>
+        </p>
+      )}
     </div>
   </section>
 
-  <section class="band">
+  <section class="band" id="inquiry">
     <div class="wrap measure">
       <p class="formline">General inquiry</p>
-      <h2>Not ready to apply? Send a note.</h2>
+      <h2>Tell us what you need.</h2>
       <p>
         If you have a question before starting an application, use this form. We read every
         submission and reply within one business day. For document exchange and anything
@@ -106,10 +108,12 @@ const description =
         <button class="btn" type="submit">Send inquiry</button>
       </form>
 
-      <p style="margin-top:2rem;font-size:.92rem;color:var(--muted)">
-        Prefer to get started? The <a href={site.applyUrl}>new client application</a> collects
-        what we need to quote the work.
-      </p>
+      {site.applicationUrl && (
+        <p style="margin-top:2rem;font-size:.92rem;color:var(--muted)">
+          Ready to start? The <a href={site.applicationUrl}>new client application</a> collects
+          what we need to quote the work.
+        </p>
+      )}
     </div>
   </section>
 </Base>
