@@ -6,8 +6,21 @@ const title = "Tax Advisory for Business Owners & Equity | Advisant";
 const description =
   "Employer equity planning, tax strategy for business owners, and family office services from enrolled agents in Metro Detroit and Denver.";
 const equity = pillars[0], owners = pillars[1];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": `${site.domain}/tax-advisory/#service`,
+  name: "Tax Advisory for Business Owners and Equity Holders",
+  description: "Employer equity planning, entity and compensation strategy, and year-end tax planning for business owners and equity holders.",
+  provider: { "@id": `${site.domain}/#organization` },
+  areaServed: [
+    { "@type": "State", name: "Michigan" },
+    { "@type": "State", name: "Colorado" },
+  ],
+};
 ---
-<Base title={title} description={description} path="/tax-advisory/">
+<Base title={title} description={description} path="/tax-advisory/" schema={schema}>
   <section class="hero">
     <div class="wrap">
       <div class="hero__grid">

@@ -53,10 +53,11 @@ const canonical = site.domain + path;
       {!site.logo && <span>Enrolled Agents · Michigan &amp; Colorado</span>}
     </a>
     <nav class="nav" aria-label="Main">
-      <a href="/tax-advisory/" aria-current={path === "/tax-advisory/" ? "page" : undefined}>Advisory</a>
-      <a href="/business-exit-tax-planning/" aria-current={path === "/business-exit-tax-planning/" ? "page" : undefined}>Exit planning</a>
-      <a href="/family-office/" aria-current={path === "/family-office/" ? "page" : undefined}>Family office</a>
+      <a href="/family-office/" aria-current={path === "/family-office/" ? "page" : undefined}>Family Office</a>
+      <a href="/tax-strategy/" aria-current={path === "/tax-strategy/" ? "page" : undefined}>Tax Strategy</a>
+      <a href="/equity-compensation/" aria-current={path === "/equity-compensation/" ? "page" : undefined}>Equity</a>
       <a href="/services/" aria-current={path === "/services/" ? "page" : undefined}>Services</a>
+      <a href="/insights/" aria-current={path.startsWith("/insights") ? "page" : undefined}>Insights</a>
       <a href="/meet-our-team/" aria-current={path === "/meet-our-team/" ? "page" : undefined}>Team</a>
       <a href="/contact/" aria-current={path === "/contact/" ? "page" : undefined}>Contact</a>
       <a class="btn" href={site.portalUrl}>Client portal</a>
@@ -73,15 +74,6 @@ const canonical = site.domain + path;
     {site.logoLight && <img class="foot__logo" src={site.logoLight} alt={site.shortName} width="631" height="184" />}
     <div class="foot__grid">
       <div>
-        <h4>{michigan.metro}</h4>
-        <p>
-          {michigan.city}, {michigan.region}<br />
-          <a href={`tel:${michigan.phone.replace(/\D/g, "")}`}>{michigan.phone}</a><br />
-          {michigan.hours}
-        </p>
-        <a href={`/${michigan.slug}/`}>Michigan office &rarr;</a>
-      </div>
-      <div>
         <h4>{colorado.city}</h4>
         <p>
           {colorado.street}{colorado.suite ? `, ${colorado.suite}` : ""}<br />
@@ -92,12 +84,23 @@ const canonical = site.domain + path;
         <a href={`/${colorado.slug}/`}>Denver office &rarr;</a>
       </div>
       <div>
+        <h4>{michigan.metro}</h4>
+        <p>
+          {michigan.city}, {michigan.region}<br />
+          <a href={`tel:${michigan.phone.replace(/\D/g, "")}`}>{michigan.phone}</a><br />
+          {michigan.hours}
+        </p>
+        <a href={`/${michigan.slug}/`}>Michigan office &rarr;</a>
+      </div>
+      <div>
         <h4>Firm</h4>
         <ul>
-          <li><a href="/tax-advisory/">Tax advisory</a></li>
-          <li><a href="/business-exit-tax-planning/">Business exit planning</a></li>
-          <li><a href="/family-office/">Family office</a></li>
-          <li><a href="/services/">All services</a></li>
+          <li><a href="/family-office/">Family Office Services</a></li>
+          <li><a href="/tax-strategy/">Tax Strategy</a></li>
+          <li><a href="/equity-compensation/">Employer Equity Planning</a></li>
+          <li><a href="/services/">All Services</a></li>
+          <li><a href="/insights/">Insights</a></li>
+          <li><a href="/fit-check/">Advisor or preparer?</a></li>
           <li><a href="/meet-our-team/">Meet our team</a></li>
           <li><a href="/contact/">Contact</a></li>
           <li><a href={site.portalUrl}>Client portal</a></li>
@@ -113,7 +116,12 @@ const canonical = site.domain + path;
         <a href={compliance.advUrl}>Form ADV Part 2A</a>
         <a href={compliance.crsUrl}>Form CRS</a>
       </p>
-      <p class="foot__disclosure">{compliance.disclosure}</p>
+      <p class="foot__disclosure">{compliance.rlaLine}</p>
+      <p class="foot__disclosure">{compliance.taxSeparationLine}</p>
+      <p class="foot__disclosure">
+        {compliance.jurisdictionLine} For additional information, contact the FGFOS
+        Compliance Department at {compliance.compliancePhone}.
+      </p>
     </div>
   </div>
 </footer>

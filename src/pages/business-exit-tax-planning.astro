@@ -1,11 +1,25 @@
 ---
 import Base from "../layouts/Base.astro";
+import { site } from "../data/site.js";
 
 const title = "Business Exit Tax Planning | Detroit & Denver | Advisant";
 const description =
   "Exit tax mitigation for owners: asset versus stock structure, price allocation, installment treatment, and state residency, planned before the letter of intent.";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": `${site.domain}/business-exit-tax-planning/#service`,
+  name: "Business Exit Tax Planning",
+  description: "Exit tax mitigation for business owners: deal structure, purchase price allocation, installment treatment, state residency, and charitable structures.",
+  provider: { "@id": `${site.domain}/#organization` },
+  areaServed: [
+    { "@type": "State", name: "Michigan" },
+    { "@type": "State", name: "Colorado" },
+  ],
+};
 ---
-<Base title={title} description={description} path="/business-exit-tax-planning/">
+<Base title={title} description={description} path="/business-exit-tax-planning/" schema={schema}>
   <section class="hero">
     <div class="wrap">
       <div class="hero__grid">
@@ -90,7 +104,7 @@ const description =
           investment income tax, but it does not apply to recapture, it carries interest
           charges above certain thresholds, and it puts you in a creditor position on your own
           sale. Earnouts have their own timing and imputed-interest problems. Both need
-          modelling rather than assumption.
+          modeling rather than assumption.
         </p>
 
         <h3>State residency and sourcing</h3>

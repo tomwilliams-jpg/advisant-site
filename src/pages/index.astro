@@ -2,7 +2,7 @@
 import Base from "../layouts/Base.astro";
 import { site, michigan, colorado, serviceGroups, pillars, reviews, reviewSource, faqs, compliance } from "../data/site.js";
 
-const title = "Tax Advisory Firm | Metro Detroit & Denver | Advisant";
+const title = "Tax Advisory Firm | Denver & Metro Detroit | Advisant";
 const description =
   "Tax advisory firm for business owners, equity holders, and families in Metro Detroit and Denver. Enrolled agents licensed to represent you before the IRS.";
 
@@ -48,7 +48,7 @@ const schema = {
           </p>
           <div class="hero__actions">
             <a class="btn" href="/contact/">New client application</a>
-            <a class="btn btn--ghost" href="/tax-advisory/">What we advise on</a>
+            <a class="btn btn--ghost" href="/services/">What we do</a>
           </div>
         </div>
 
@@ -60,10 +60,10 @@ const schema = {
             before the IRS anywhere &mdash; including on returns we did not prepare.
           </p>
           <dl>
-            <dt>Michigan</dt>
-            <dd>{michigan.city}, {michigan.region}</dd>
             <dt>Colorado</dt>
             <dd>{colorado.city}, {colorado.region}</dd>
+            <dt>Michigan</dt>
+            <dd>{michigan.city}, {michigan.region}</dd>
             <dt>Telephone</dt>
             <dd><a href={`tel:${michigan.phone.replace(/\D/g, "")}`} style="color:inherit">{michigan.phone}</a></dd>
             <dt>Representation</dt>
@@ -86,9 +86,7 @@ const schema = {
             <h3>{pl.title}</h3>
             <p>{pl.lede}</p>
             <p style="margin-top:.9rem">
-              <a href={pl.slug === "family-office" ? "/family-office/" : `/tax-advisory/#${pl.slug}`}>
-                Read more &rarr;
-              </a>
+              <a href={pl.href}>Read more &rarr;</a>
             </p>
           </div>
         ))}
@@ -98,12 +96,19 @@ const schema = {
 
   <section class="statement">
     <div class="wrap">
-      <blockquote>
-        <p>
-          &ldquo;Tom has skillfully navigated all the details.&rdquo;
-        </p>
-        <cite>From a tax client&rsquo;s Google review. No compensation was provided. Not representative of all clients.</cite>
-      </blockquote>
+      <p class="formline formline--onDark">In their words</p>
+      <div class="pulls">
+        {reviews.map((r) => (
+          <blockquote class="pull">
+            <p>&ldquo;{r.pull}&rdquo;</p>
+          </blockquote>
+        ))}
+      </div>
+      <p class="pull__note">
+        Statements from tax clients of Advisant Financial, LLC describing tax services. Not a
+        description of investment advisory services. No compensation was provided. Not
+        representative of all clients.
+      </p>
     </div>
   </section>
 
@@ -208,6 +213,15 @@ const schema = {
   <section class="band">
     <div class="wrap grid grid--2">
       <div class="prose">
+        <p class="formline">Colorado</p>
+        <h2>{colorado.city}</h2>
+        <p>
+          Denver practice covering Colorado's pass-through entity election, the Denver
+          Occupational Privilege Tax, and TABOR-driven changes that shift from year to year.
+        </p>
+        <p><a href={`/${colorado.slug}/`}>Denver tax services &rarr;</a></p>
+      </div>
+      <div class="prose">
         <p class="formline">Michigan</p>
         <h2>{michigan.metro}</h2>
         <p>
@@ -216,15 +230,6 @@ const schema = {
           cross the state line.
         </p>
         <p><a href={`/${michigan.slug}/`}>Michigan tax services &rarr;</a></p>
-      </div>
-      <div class="prose">
-        <p class="formline">Colorado</p>
-        <h2>{colorado.city}</h2>
-        <p>
-          Denver practice covering Colorado's pass-through entity election, the Denver
-          Occupational Privilege Tax, and TABOR-driven changes that shift from year to year.
-        </p>
-        <p><a href={`/${colorado.slug}/`}>Denver tax services &rarr;</a></p>
       </div>
     </div>
   </section>

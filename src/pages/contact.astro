@@ -25,17 +25,6 @@ const description =
   <section class="band">
     <div class="wrap grid grid--2">
       <div class="facts">
-        <p class="formline">{michigan.metro}</p>
-        <dl>
-          <dt>Location</dt><dd>{michigan.city}, {michigan.region}</dd>
-          <dt>Phone</dt><dd><a href={`tel:${michigan.phone.replace(/\D/g,"")}`}>{michigan.phone}</a></dd>
-          <dt>Hours</dt><dd>{michigan.hours}</dd>
-          <dt>Meetings</dt><dd>By appointment</dd>
-        </dl>
-        <a class="btn btn--ghost" href={`/${michigan.slug}/`}>Michigan tax services</a>
-      </div>
-
-      <div class="facts">
         <p class="formline">{colorado.city}</p>
         <dl>
           <dt>Address</dt>
@@ -46,6 +35,17 @@ const description =
         <a class="btn btn--ghost" href={`/${colorado.slug}/`}>Denver tax services</a>
       </div>
     </div>
+      <div class="facts">
+        <p class="formline">{michigan.metro}</p>
+        <dl>
+          <dt>Location</dt><dd>{michigan.city}, {michigan.region}</dd>
+          <dt>Phone</dt><dd><a href={`tel:${michigan.phone.replace(/\D/g,"")}`}>{michigan.phone}</a></dd>
+          <dt>Hours</dt><dd>{michigan.hours}</dd>
+          <dt>Meetings</dt><dd>By appointment</dd>
+        </dl>
+        <a class="btn btn--ghost" href={`/${michigan.slug}/`}>Michigan tax services</a>
+      </div>
+
   </section>
 
   <section class="band band--sunk">

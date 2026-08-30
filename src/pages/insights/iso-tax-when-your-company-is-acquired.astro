@@ -1,0 +1,139 @@
+---
+import Article from "../../layouts/Article.astro";
+import { articles } from "../../data/insights.js";
+const article = articles.find((a) => a.slug === "iso-tax-when-your-company-is-acquired");
+---
+<Article article={article}>
+
+<p>
+  An acquisition is usually the first time an employee with incentive stock options has to
+  think about them seriously. It is also, in most deals, the last moment at which anything
+  can be done. The merger agreement decides the tax treatment, and by the time it reaches
+  employees it is signed.
+</p>
+<p>
+  What follows is what actually happens to ISOs in the three common outcomes, and the
+  provisions worth reading in your own documents now rather than at closing.
+</p>
+
+<h2>Three things can happen to your options</h2>
+
+<h3>1. Cashed out</h3>
+<p>
+  The most common outcome in a cash deal. Your vested options are cancelled and you receive
+  the spread — deal price per share less your exercise price — in cash, usually through
+  payroll.
+</p>
+<p>
+  This is a disqualifying disposition. You never held the shares, so there is no capital
+  gain treatment available and no holding period to satisfy. The entire spread is ordinary
+  compensation income, reported on your W-2, subject to income tax withholding and payroll
+  taxes.
+</p>
+<p>
+  The practical consequence is that the favorable ISO treatment you may have been planning
+  around simply does not happen. The option is taxed like a cash bonus. For a large grant
+  this can push a single year's income into a much higher bracket, trigger the additional
+  Medicare tax, and phase out deductions and credits that were available the year before.
+</p>
+
+<h3>2. Assumed or rolled over</h3>
+<p>
+  In a stock deal, the acquirer may assume your options and convert them into options on
+  its own shares, adjusting the count and strike price to preserve the economics.
+</p>
+<p>
+  Done correctly, this is not a taxable event. Your original grant date and, if you already
+  exercised, your holding period generally carry forward. But the substitution has to meet
+  specific requirements to preserve ISO status. If the adjustment gives you a benefit you
+  did not have before — a lower ratio of exercise price to value — the options can convert
+  to non-qualified options. You will not be told this happened. It shows up later, when a
+  broker reports the exercise differently than you expected.
+</p>
+
+<h3>3. Cancelled for nothing</h3>
+<p>
+  If the deal price is at or below your exercise price, underwater options are typically
+  cancelled without payment. There is no tax event and no deduction. If you exercised those
+  options in a prior year and paid alternative minimum tax on the spread, you may be
+  carrying an AMT credit that is now worth more attention than the options ever were.
+</p>
+
+<h2>The acceleration trap</h2>
+
+<p>
+  This is the provision that surprises people, and it is worth understanding before you
+  read your own grant.
+</p>
+<p>
+  ISOs carry a statutory limit: no more than $100,000 of options, measured by the value of
+  the underlying stock at grant, may become <em>first exercisable</em> by any one employee in
+  any calendar year. Options above that threshold are treated as non-qualified options.
+</p>
+<p>
+  Ordinary vesting schedules are usually designed to stay under the limit. Acceleration
+  breaks that design. When a change of control accelerates several years of vesting into a
+  single year, a grant that complied comfortably can blow through $100,000 in one moment.
+  The excess becomes NSOs by operation of law — no election, no notice, no choice.
+</p>
+
+<div class="callout">
+  <strong>Why this matters even in a cash deal</strong>
+  <p>
+    If everything is cashed out anyway, the treatment is ordinary income either way, so the
+    conversion looks harmless. It is not harmless if the deal falls through, if you leave
+    before closing, or if only part of the position is cashed out. In those cases you are
+    left holding options you believe are ISOs and that are not.
+  </p>
+</div>
+
+<h2>The ninety-day rule</h2>
+
+<p>
+  To keep ISO status, options must generally be exercised within three months of ending
+  employment. Miss it and they become NSOs — still exercisable if the plan allows, but taxed
+  as ordinary income on the spread at exercise.
+</p>
+<p>
+  Acquisitions produce terminations. Redundancies, role eliminations, people who decide not
+  to stay. If you leave with vested, unexercised, in-the-money ISOs, the clock starts on your
+  last day and it does not care that you were busy.
+</p>
+
+<h2>Escrow, holdbacks, and earnouts</h2>
+
+<p>
+  Deal proceeds are rarely paid all at once. A portion typically sits in escrow for twelve to
+  eighteen months against indemnity claims, and earnouts can run for years.
+</p>
+<p>
+  For option holders cashed out through payroll, the timing question is when the deferred
+  amounts become taxable and how they are reported. Amounts held back are usually taxed when
+  received, not at closing — which spreads income across years and can be an advantage. But
+  it also means a withholding calculation done at closing may not match your actual liability
+  for either year, and the shortfall lands on you.
+</p>
+
+<h2>What to do before a deal, not during one</h2>
+
+<ul>
+  <li>Read your grant agreement for the change-of-control provision. Full acceleration, partial, double-trigger, or nothing — the answer changes the analysis entirely.</li>
+  <li>Know your exercise price, grant date, and vested count for every tranche. Not approximately.</li>
+  <li>If you exercised and held in a prior year, find out whether you have an unused AMT credit. People routinely forget these.</li>
+  <li>Model an early exercise while the outcome is uncertain. Exercising before a deal starts the capital gain holding period, but it puts real money at risk on a company that may not sell, and it can create AMT in the year of exercise on a gain you have not received.</li>
+  <li>If your equity is a meaningful part of your net worth, get advice at rumour stage. Once a letter of intent exists, the assignment-of-income doctrine and the deal timeline close most doors.</li>
+</ul>
+
+<h2>The short version</h2>
+
+<p>
+  In a cash acquisition, expect ordinary income and plan for the tax bill. In a stock deal,
+  confirm in writing whether your options were assumed as ISOs or converted. In both, check
+  the $100,000 limit against your acceleration clause, and watch the ninety-day window if you
+  are leaving.
+</p>
+<p>
+  None of this requires a deal to be underway. All of it is harder once one is.
+</p>
+
+</Article>

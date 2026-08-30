@@ -1,4 +1,8 @@
 # Old TaxDome URLs -> new pages (301 permanent)
+/tax-advisory                 /services/                    301
+/tax-advisory/                /services/                    301
+/business-exit-tax-planning   /tax-strategy/                301
+/business-exit-tax-planning/  /tax-strategy/                301
 /Meet-our-Team    /meet-our-team/              301
 /Meet-our-Team/   /meet-our-team/              301
 /Services         /services/                   301

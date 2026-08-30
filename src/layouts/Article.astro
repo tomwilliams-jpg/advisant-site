@@ -1,0 +1,69 @@
+---
+import Base from "../layouts/Base.astro";
+import { site, compliance } from "../data/site.js";
+
+const { article } = Astro.props;
+const path = `/insights/${article.slug}/`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": `${site.domain}${path}#article`,
+  headline: article.title,
+  description: article.dek,
+  datePublished: article.published,
+  dateModified: article.updated,
+  author: { "@type": "Organization", name: site.gbpName, url: site.domain },
+  publisher: { "@id": `${site.domain}/#organization` },
+  mainEntityOfPage: site.domain + path,
+};
+
+const dateLabel = new Date(article.published + "T12:00:00").toLocaleDateString("en-US", {
+  year: "numeric", month: "long", day: "numeric",
+});
+---
+<Base title={article.seoTitle ?? `${article.title} | Advisant`} description={article.dek} path={path} schema={schema}>
+  <section class="hero">
+    <div class="wrap">
+      <p class="formline formline--onDark">{article.topic}</p>
+      <h1 class="article__title">{article.title}</h1>
+      <p class="article__dek">{article.dek}</p>
+      <p class="article__meta">{dateLabel} &middot; {article.minutes} min read</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap split">
+      <div class="prose article__body">
+        <slot />
+
+        <hr class="article__rule" />
+        <p class="article__note">
+          This article is general information, not advice for your situation. Tax outcomes
+          turn on facts we do not know about you, and the rules described here change.
+          Before acting, talk to us or to another qualified adviser.
+        </p>
+      </div>
+
+      <aside class="facts">
+        <p class="formline">Work with us</p>
+        <p style="font-size:.95rem;color:#4A5261;margin-bottom:1.2rem">
+          If this describes a decision you are facing, the application takes about five
+          minutes and tells us enough to quote the work.
+        </p>
+        <a class="btn" href="/contact/">New client application</a>
+        <p style="margin-top:1.5rem;font-size:.9rem">
+          <a href="/fit-check/">Not sure if you need an advisor? &rarr;</a>
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="band band--sunk">
+    <div class="wrap measure">
+      <p class="formline">Important disclosures</p>
+      <p class="disclosure">{compliance.rlaLine}</p>
+      <p class="disclosure" style="margin-top:1rem">{compliance.taxSeparationLine}</p>
+    </div>
+  </section>
+</Base>

@@ -10,7 +10,8 @@ export async function GET() {
       p
         .replace("./", "")
         .replace(/\.astro$/, "")
-        .replace(/^index$/, "")
+        .replace(/(^|\/)index$/, "$1")
+        .replace(/\/$/, "")
     )
     .map((slug) => (slug ? `${SITE}/${slug}/` : `${SITE}/`))
     .sort();

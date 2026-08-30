@@ -1,0 +1,166 @@
+---
+import Base from "../layouts/Base.astro";
+import { site, compliance } from "../data/site.js";
+
+const title = "Advisor or preparer? A two-minute fit check | Advisant";
+const description =
+  "Six questions that indicate whether your situation calls for a tax advisor or a competent preparer. No email required, nothing stored.";
+---
+<Base title={title} description={description} path="/fit-check/">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero__grid">
+        <div>
+          <p class="formline formline--onDark">Fit check</p>
+          <h1>Do you need an advisor, or a preparer?</h1>
+          <p>
+            Most people do not need us. A competent preparer handles a straightforward return
+            perfectly well and costs far less. Six questions, about two minutes, and nothing
+            you enter leaves your browser.
+          </p>
+        </div>
+        <aside class="credential">
+          <div class="credential__seal" aria-hidden="true">EA</div>
+          <h2>No email, no storage.</h2>
+          <p>
+            This runs entirely on your device. We do not see your answers and nothing is sent
+            anywhere.
+          </p>
+          <dl>
+            <dt>Questions</dt><dd>6</dd>
+            <dt>Time</dt><dd>About 2 minutes</dd>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap measure">
+      <form id="fc" class="fitcheck">
+        <fieldset class="fc-q">
+          <legend><h3>1. Do you hold equity in your employer that you have not yet sold?</h3></legend>
+          <p class="fc-help">Stock options, RSUs, an ESPP, or founder stock.</p>
+          <label><input type="radio" name="q1" value="2" /> Yes</label>
+          <label><input type="radio" name="q1" value="0" /> No</label>
+        </fieldset>
+
+        <fieldset class="fc-q">
+          <legend><h3>2. Do you own part of a business that files its own return?</h3></legend>
+          <p class="fc-help">A partnership, S corporation, or multi-member LLC.</p>
+          <label><input type="radio" name="q2" value="2" /> Yes</label>
+          <label><input type="radio" name="q2" value="0" /> No</label>
+        </fieldset>
+
+        <fieldset class="fc-q">
+          <legend><h3>3. Do you file in more than one state?</h3></legend>
+          <label><input type="radio" name="q3" value="1" /> Yes</label>
+          <label><input type="radio" name="q3" value="0" /> No</label>
+        </fieldset>
+
+        <fieldset class="fc-q">
+          <legend><h3>4. Is a sale, exit, or liquidity event plausible in the next five years?</h3></legend>
+          <p class="fc-help">Selling the business, a tender offer, or an acquisition.</p>
+          <label><input type="radio" name="q4" value="2" /> Yes</label>
+          <label><input type="radio" name="q4" value="0" /> No or unsure</label>
+        </fieldset>
+
+        <fieldset class="fc-q">
+          <legend><h3>5. Does a trust, holding company, or foundation sit in your structure?</h3></legend>
+          <label><input type="radio" name="q5" value="2" /> Yes</label>
+          <label><input type="radio" name="q5" value="0" /> No</label>
+        </fieldset>
+
+        <fieldset class="fc-q">
+          <legend><h3>6. In the last two years, has anyone walked you through a decision <em>before</em> you made it?</h3></legend>
+          <p class="fc-help">Not preparing the return afterward — advising on the choice.</p>
+          <label><input type="radio" name="q6" value="0" /> Yes</label>
+          <label><input type="radio" name="q6" value="1" /> No</label>
+        </fieldset>
+
+        <button class="btn" type="button" id="fc-go">See the result</button>
+      </form>
+
+      <div id="fc-out" class="fitcheck__out" hidden>
+        <p class="formline">Result</p>
+        <h2 id="fc-head"></h2>
+        <p id="fc-body"></p>
+        <p id="fc-cta" style="margin-top:1.75rem"></p>
+        <p style="margin-top:1.25rem">
+          <button class="btn btn--ghost" type="button" id="fc-again">Start over</button>
+        </p>
+      </div>
+
+      <p class="disclosure" style="margin-top:2.5rem">
+        This is a general orientation tool, not advice, a recommendation, or an evaluation of
+        your circumstances. It does not consider your financial situation and no
+        adviser&ndash;client relationship is created by using it.
+      </p>
+    </div>
+  </section>
+
+  <section class="band band--sunk">
+    <div class="wrap measure">
+      <p class="formline">Important disclosures</p>
+      <p class="disclosure">{compliance.rlaLine}</p>
+      <p class="disclosure" style="margin-top:1rem">{compliance.taxSeparationLine}</p>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      var form = document.getElementById("fc");
+      var out = document.getElementById("fc-out");
+      var go = document.getElementById("fc-go");
+      var again = document.getElementById("fc-again");
+
+      var RESULTS = [
+        {
+          min: 0, max: 1,
+          head: "A good preparer is probably enough.",
+          body: "Nothing you have described suggests decisions are driving your tax bill. A competent preparer will file this accurately for a fraction of what advisory work costs, and we would tell you the same thing on a call. Come back if your circumstances change \u2014 equity, a business, a second state, or a sale in view.",
+          cta: '<a class="btn btn--ghost" href="/insights/">Read our insights instead</a>'
+        },
+        {
+          min: 2, max: 4,
+          head: "There is probably something worth a conversation.",
+          body: "You have at least one area where timing changes the outcome, and it may be going unmanaged. That does not automatically mean you need a year-round advisory relationship \u2014 sometimes it is one decision, once. Worth a short conversation to find out which.",
+          cta: '<a class="btn" href="/contact/">New client application</a>'
+        },
+        {
+          min: 5, max: 99,
+          head: "This is the work we do.",
+          body: "Several decisions in your situation are made before a return is prepared and cannot be fixed afterward. If nobody is looking across all of it, that is the gap advisory work fills. The application takes about five minutes and tells us enough to quote it.",
+          cta: '<a class="btn" href="/contact/">New client application</a>'
+        }
+      ];
+
+      go.addEventListener("click", function () {
+        var total = 0, answered = 0;
+        for (var i = 1; i <= 6; i++) {
+          var picked = form.querySelector('input[name="q' + i + '"]:checked');
+          if (picked) { total += parseInt(picked.value, 10); answered++; }
+        }
+        if (answered < 6) {
+          go.textContent = "Please answer all six";
+          setTimeout(function () { go.textContent = "See the result"; }, 1800);
+          return;
+        }
+        var r = RESULTS.filter(function (x) { return total >= x.min && total <= x.max; })[0];
+        document.getElementById("fc-head").textContent = r.head;
+        document.getElementById("fc-body").textContent = r.body;
+        document.getElementById("fc-cta").innerHTML = r.cta;
+        form.hidden = true;
+        out.hidden = false;
+        out.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+
+      again.addEventListener("click", function () {
+        form.reset();
+        out.hidden = true;
+        form.hidden = false;
+        form.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    })();
+  </script>
+</Base>

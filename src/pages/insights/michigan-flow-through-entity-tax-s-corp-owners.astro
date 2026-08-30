@@ -1,0 +1,130 @@
+---
+import Article from "../../layouts/Article.astro";
+import { articles } from "../../data/insights.js";
+const article = articles.find((a) => a.slug === "michigan-flow-through-entity-tax-s-corp-owners");
+---
+<Article article={article}>
+
+<p>
+  Michigan's flow-through entity tax has been available since 2021, and for its first three
+  years it carried a design flaw that made it genuinely hard to use well: you had to commit
+  before you knew whether it would help. That changed, and a lot of advice still online has
+  not caught up.
+</p>
+
+<h2>What the election does</h2>
+
+<p>
+  Partnerships and S corporations can elect to pay Michigan income tax at the entity level
+  rather than passing the full liability through to owners. The entity pays at the individual
+  income tax rate, and each owner receives a refundable credit for their share.
+</p>
+<p>
+  The point is federal, not state. State income tax paid personally is an itemized deduction
+  subject to the federal SALT cap. State income tax paid by the business is an ordinary
+  business deduction, which reduces the income flowing through on the K-1 before the cap ever
+  applies. The IRS blessed this structure in Notice 2020-75, and most states with an income
+  tax now offer some version.
+</p>
+<p>
+  The saving is not the state tax — that is owed either way. It is the federal tax on the
+  deduction you would otherwise have lost.
+</p>
+
+<h2>What changed, and why it matters</h2>
+
+<p>
+  For tax years 2021 through 2023, the election had to be made by the fifteenth day of the
+  third month <em>of</em> the tax year — March 15 for calendar-year filers. That meant
+  committing to an irrevocable three-year election in the first quarter, before you knew what
+  the year's profit would be, whether an owner would leave, or whether anyone's federal
+  position would make the election worthwhile.
+</p>
+<p>
+  Michigan fixed this. Legislation signed in January 2025 moved the deadline for tax years
+  beginning on or after January 1, 2024 to the last day of the ninth month after the end of
+  the tax year — September 30 for calendar-year filers.
+</p>
+
+<div class="callout">
+  <strong>What that buys you</strong>
+  <p>
+    You can now decide with the full year's numbers in front of you, after the K-1s are
+    drafted and each owner's federal picture is known. The decision moved from a forecast to
+    an arithmetic problem.
+  </p>
+</div>
+
+<h2>Three things the extension did not change</h2>
+
+<h3>It is still irrevocable for three years</h3>
+<p>
+  The election binds the entity for the year of election and the two following years. An
+  owner group that changes composition, a business that swings from profit to loss, or an
+  owner who moves to a state with a different credit regime all have to live inside that
+  window. This is the part that deserves modelling, and it is the reason the extension is
+  helpful rather than sufficient.
+</p>
+
+<h3>Electing late has a cash cost</h3>
+<p>
+  If you elect after the annual return due date, the full liability for that year is due on
+  the day you elect. For a profitable entity that can be a substantial single payment with no
+  notice. The extension gives you information; it does not give you time to fund the decision.
+</p>
+
+<h3>Timing still governs the federal deduction</h3>
+<p>
+  A cash-basis entity generally deducts the tax in the year it is paid. Electing in September
+  for the prior year means the payment lands in the current year, which moves the federal
+  deduction with it. That is not necessarily bad, but it is a different year's return and it
+  needs to be modelled rather than assumed.
+</p>
+
+<h2>Who it still helps, now that the SALT cap has moved</h2>
+
+<p>
+  The 2025 federal legislation raised the SALT cap substantially above the original $10,000,
+  with a phase-down at higher incomes and a scheduled reversion later this decade. That
+  changed the arithmetic without changing the conclusion for most owners of profitable
+  Michigan entities.
+</p>
+<p>
+  The election tends to help when:
+</p>
+<ul>
+  <li>Owners already exhaust the cap on property taxes and other state taxes before any business income tax is counted</li>
+  <li>Owner income is high enough that the cap phases down</li>
+  <li>The entity is meaningfully profitable, so the entity-level tax is large relative to the cost of compliance</li>
+  <li>Owners are Michigan residents who will actually use the refundable credit</li>
+</ul>
+<p>
+  It tends to help less, or not at all, when the entity is marginally profitable, when owners
+  are non-residents whose home states treat the credit unfavorably, or when the owner group
+  is likely to change inside the three-year window.
+</p>
+
+<h2>The mechanics</h2>
+
+<ul>
+  <li>The election is made by submitting a payment through Michigan Treasury Online directed to the elected tax year. There is no form and no late-election relief.</li>
+  <li>The annual FTE return is due the last day of the third month after year end.</li>
+  <li>Estimated payments follow the ordinary quarterly schedule.</li>
+  <li>Owners claim the refundable credit on their individual returns; the entity reports each owner's share.</li>
+</ul>
+
+<h2>What we would actually do</h2>
+
+<p>
+  Model it per owner rather than for the entity. The election is made at the entity level but
+  the benefit is realized on individual returns, and it is common for an election to help
+  three owners and be neutral or negative for a fourth. That conversation is easier in
+  August with real numbers than in March with a forecast.
+</p>
+<p>
+  Then check whether the three-year commitment survives your own plans. If a partner is
+  retiring, an owner is relocating, or a sale is plausible inside the window, the election is
+  a constraint as much as a benefit.
+</p>
+
+</Article>

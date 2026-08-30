@@ -1,31 +1,87 @@
 ---
 import Base from "../layouts/Base.astro";
-import { serviceGroups, michigan, colorado } from "../data/site.js";
+import { site, serviceGroups, pillars, colorado, michigan } from "../data/site.js";
 
-const title = "Tax Services | Advisant Financial, LLC";
+const title = "Services | Tax Advisory & IRS Representation | Advisant";
 const description =
-  "Individual and business tax preparation, year-end planning, IRS and state representation, trust and estate returns, and employer payroll compliance.";
+  "Advisory, compliance, and representation: family office services, business owner tax strategy, equity planning, tax preparation, trust returns, and IRS representation.";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "@id": `${site.domain}/services/#services`,
+  name: "Advisant Financial services",
+  itemListElement: [
+    ...pillars.map((p, i) => ({
+      "@type": "ListItem", position: i + 1,
+      item: { "@type": "Service", name: p.title, url: site.domain + p.href },
+    })),
+    ...serviceGroups.flatMap((g) => g.items).map((s, i) => ({
+      "@type": "ListItem", position: pillars.length + i + 1,
+      item: { "@type": "Service", name: s.title },
+    })),
+  ],
+};
 ---
-<Base title={title} description={description} path="/services/">
+<Base title={title} description={description} path="/services/" schema={schema}>
+
   <section class="hero">
     <div class="wrap">
-      <p class="formline formline--onDark">Services</p>
-      <h1>Advisory first. Compliance done properly.</h1>
-      <p>
-        Preparation records decisions already made. It has to be right, and we treat it
-        that way — but it is not what changes the number. The advisory work is.
-      </p>
+      <div class="hero__grid">
+        <div>
+          <p class="formline formline--onDark">Services</p>
+          <h1>Everything we do, in one place.</h1>
+          <p>
+            Advisory work changes the number. Compliance records it. Representation defends it.
+            We do all three, and the same people handle each — nothing is passed to another firm.
+          </p>
+          <div class="hero__actions">
+            <a class="btn" href="/contact/">New client application</a>
+            <a class="btn btn--ghost" href="/fit-check/">Advisor or preparer?</a>
+          </div>
+        </div>
+        <aside class="credential">
+          <div class="credential__seal" aria-hidden="true">EA</div>
+          <h2>Two offices, federal reach.</h2>
+          <dl>
+            <dt>Colorado</dt><dd>{colorado.city}, {colorado.region}</dd>
+            <dt>Michigan</dt><dd>{michigan.city}, {michigan.region}</dd>
+            <dt>Representation</dt><dd>All 50 states</dd>
+          </dl>
+        </aside>
+      </div>
     </div>
   </section>
 
   <section class="band">
     <div class="wrap">
+      <p class="formline">Advisory</p>
+      <h2 style="max-width:26ch">Three areas where timing decides the number.</h2>
+      <div class="ledger">
+        {pillars.map((pl) => (
+          <div class="ledger__group">
+            <div class="ledger__head">
+              <h3><a href={pl.href}>{pl.title}</a></h3>
+            </div>
+            <p class="ledger__lede">{pl.lede}</p>
+            <ul class="servicelist">
+              {pl.points.map((pt) => <li>{pt}</li>)}
+            </ul>
+            <p class="ledger__more"><a href={pl.href}>More on {pl.title.toLowerCase()} &rarr;</a></p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--sunk">
+    <div class="wrap">
+      <p class="formline">Compliance and representation</p>
+      <h2>The rest of the work, done properly.</h2>
       <div class="ledger">
         {serviceGroups.map((g) => (
           <div class="ledger__group">
-            <div class="ledger__head">
-              <h3>{g.group}</h3>
-            </div>
+            <div class="ledger__head"><h3>{g.group}</h3></div>
             {g.items.map((s) => (
               <div class="ledger__row">
                 <h4>{s.title}</h4>
@@ -38,38 +94,36 @@ const description =
     </div>
   </section>
 
-  <section class="band band--sunk">
+  <section class="band">
     <div class="wrap split">
       <div class="prose">
         <p class="formline">How engagements run</p>
         <h2>What working with us looks like</h2>
         <p>
-          We start by reading your two most recent returns. That is usually faster and more
-          revealing than an intake questionnaire, and it tells us whether there is anything
-          worth amending before we discuss the year ahead.
+          We start by reading your two most recent returns. That is faster and more revealing
+          than an intake questionnaire, and it tells us whether anything is worth amending
+          before we discuss the year ahead.
         </p>
         <p>
           Planning conversations happen before year-end, not in April. By the time a return is
-          being prepared, nearly every lever has already been pulled. Entity elections,
-          retirement plan contributions, timing of recognition, and pass-through elections all
-          have deadlines that precede the filing deadline, sometimes by months.
+          being prepared, nearly every lever has been pulled. Entity elections, retirement plan
+          contributions, timing of recognition, and pass-through elections all have deadlines
+          that precede the filing deadline, sometimes by months.
         </p>
         <p>
-          If a notice arrives, we handle it. Enrolled agent status carries unlimited practice
-          rights before the IRS, so representation does not require handing your file to
-          another firm.
+          Fees are agreed up front. We do not run an hourly meter during the year, so you can
+          call without watching the clock.
         </p>
       </div>
       <aside class="facts">
-        <p class="formline">Two offices</p>
+        <p class="formline">Offices</p>
         <dl>
-          <dt>Michigan</dt>
-          <dd><a href={`/${michigan.slug}/`}>{michigan.metro}</a></dd>
-          <dt>Colorado</dt>
-          <dd><a href={`/${colorado.slug}/`}>{colorado.city}</a></dd>
+          <dt>Colorado</dt><dd><a href={`/${colorado.slug}/`}>{colorado.city}</a></dd>
+          <dt>Michigan</dt><dd><a href={`/${michigan.slug}/`}>{michigan.metro}</a></dd>
         </dl>
         <a class="btn" href="/contact/">New client application</a>
       </aside>
     </div>
   </section>
+
 </Base>

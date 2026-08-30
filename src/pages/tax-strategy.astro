@@ -1,0 +1,200 @@
+---
+import Base from "../layouts/Base.astro";
+import { site, pillars } from "../data/site.js";
+const strategy = pillars.find((p) => p.slug === "tax-strategy");
+
+const title = "Tax Strategy for Business Owners | Advisant Financial";
+const description =
+  "Entity structure, owner compensation, retirement plan design, depreciation, multi-state exposure, and exit planning for business owners in Denver and Metro Detroit.";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": `${site.domain}/tax-strategy/#service`,
+  name: "Tax Strategy for Business Owners",
+  description,
+  provider: { "@id": `${site.domain}/#organization` },
+  areaServed: [
+    { "@type": "State", name: "Colorado" },
+    { "@type": "State", name: "Michigan" },
+  ],
+};
+---
+<Base title={title} description={description} path="/tax-strategy/" schema={schema}>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero__grid">
+        <div>
+          <p class="formline formline--onDark">Business owners</p>
+          <h1>The decisions that move your tax bill are structural.</h1>
+          <p>
+            Deductions are arithmetic. Structure is strategy. Whether the entity is right,
+            whether the salary is defensible, whether the retirement plan is sized to what the
+            business can actually absorb — those set the number, and they are all decided
+            before a return exists.
+          </p>
+          <div class="hero__actions">
+            <a class="btn" href="/contact/">New client application</a>
+            <a class="btn btn--ghost" href="#exit">Exit planning</a>
+          </div>
+        </div>
+        <aside class="credential">
+          <div class="credential__seal" aria-hidden="true">EA</div>
+          <h2>Year-round, not seasonal.</h2>
+          <p>
+            Most of what we do has a deadline that precedes the filing deadline, sometimes by
+            months.
+          </p>
+          <dl>
+            <dt>Cadence</dt><dd>Quarterly, plus as needed</dd>
+            <dt>Credential</dt><dd>Enrolled Agent (IRS)</dd>
+            <dt>Representation</dt><dd>All 50 states</dd>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap split">
+      <div class="prose">
+        <p class="formline">Structure</p>
+        <h2>Entity, compensation, and the things that compound</h2>
+        <p>
+          Owners tend to inherit their structure rather than choose it. An LLC formed in a
+          hurry, an S election made on a preparer's suggestion five years ago, a salary set by
+          what felt reasonable at the time. Each was defensible when made. Whether they are
+          still right is a different question, and nobody asks it during filing season.
+        </p>
+
+        <h3>Entity selection and conversion</h3>
+        <p>
+          The S election saves self-employment tax up to a point and creates cost and
+          constraint past it. There is a profit level below which it does not pay for itself
+          and an ownership complexity above which it becomes a liability. Conversions run both
+          directions and both have consequences — built-in gains, accumulated adjustments,
+          basis — that take years to work through.
+        </p>
+
+        <h3>Reasonable compensation</h3>
+        <p>
+          The most examined number on an S corporation return. Set it too low and the exam
+          risk is real; set it too high and you are paying payroll tax on distributions.
+          Defensible means documented at the time with comparable data, not reconstructed
+          afterward.
+        </p>
+
+        <h3>Retirement plan design</h3>
+        <p>
+          The largest legitimate deduction available to most profitable owners, and the most
+          underused. A solo 401(k) with profit sharing, a cash balance plan layered on top, or
+          a defined benefit plan for an owner with few employees and a short runway to
+          retirement can absorb far more than owners assume. Plan design has to match the
+          census, and the establishment deadlines are not the same as the funding deadlines.
+        </p>
+
+        <h3>Pass-through entity elections</h3>
+        <p>
+          Both Michigan and Colorado allow entity-level tax that bypasses the federal SALT
+          cap. Neither is automatic, both have timing rules, and Michigan's is irrevocable for
+          three years. We model per owner — it is common for an election to help three owners
+          and be neutral for a fourth.
+        </p>
+
+        <h3>Timing and method</h3>
+        <p>
+          Accounting method, inventory treatment, depreciation elections, and the choice
+          between bonus depreciation and Section 179 all move income between years. On owned
+          real estate, cost segregation can accelerate substantial deductions — worth modeling
+          against recapture on eventual sale rather than taken reflexively.
+        </p>
+
+        <h3>Qualified business income</h3>
+        <p>
+          The deduction phases against wage and property limitations, which means wage policy,
+          entity structure, and asset ownership all interact with it. Owners near a threshold
+          often have more control over the outcome than they realize.
+        </p>
+
+        <h3>Multi-state exposure</h3>
+        <p>
+          Hiring one person in another state can create registration, withholding,
+          unemployment insurance, and income tax filing obligations. It is cheap to handle
+          before it happens and expensive afterward, because the notices arrive with penalties
+          attached.
+        </p>
+
+        <h2 id="exit">Exit planning: the tax on your sale is decided years earlier</h2>
+        <p>
+          By the time a letter of intent is signed, most of the structure is fixed. Owners who
+          keep the most started two or three years out. The difference between a well-structured
+          exit and a poorly structured one on the same purchase price is routinely seven figures
+          on a mid-sized deal — and most of it is ordinary decisions made early enough to still
+          be available.
+        </p>
+
+        <h3>Asset versus stock</h3>
+        <p>
+          Buyers want assets for the stepped-up basis. Sellers usually want stock for capital
+          treatment and a cleaner liability break. For S corporations, a §338(h)(10) or §336(e)
+          election gives the buyer asset treatment while preserving a single level of tax for
+          the seller. That is a trade to price, not a term to accept.
+        </p>
+
+        <h3>Purchase price allocation</h3>
+        <p>
+          In an asset deal, how the price is allocated across classes determines whether
+          proceeds are capital or ordinary. Goodwill, equipment subject to depreciation
+          recapture, inventory, and a personal goodwill argument all land differently. Both
+          parties file a single consistent schedule, so it is negotiated once.
+        </p>
+
+        <h3>C corporation double tax</h3>
+        <p>
+          A C corporation asset sale is taxed at the entity and again on distribution. If
+          converting to S status is on the table, the built-in gains period means the clock
+          starts years before the sale. This is the most common structural regret we see.
+        </p>
+
+        <h3>Installment sales, earnouts, and residency</h3>
+        <p>
+          Spreading gain can lower the effective rate and manage the net investment income tax,
+          but it does not apply to recapture and it puts you in a creditor position on your own
+          sale. Separately, where you are resident at the moment of sale can move the state tax
+          to zero or fail to — and a residency change made carelessly during a deal invites an
+          audit rather than avoiding tax.
+        </p>
+
+        <h3>Charitable timing</h3>
+        <p>
+          Contributing appreciated equity to a charitable remainder trust or donor advised fund
+          before a binding agreement exists can remove gain from the sale entirely while
+          producing a deduction. Once the sale is effectively negotiated, the assignment-of-income
+          doctrine applies and the window is gone.
+        </p>
+
+        <h2>What this covers</h2>
+        <ul>{strategy.points.map((x) => <li>{x}</li>)}</ul>
+      </div>
+
+      <aside class="facts">
+        <p class="formline">Worth a conversation if</p>
+        <ul class="ticklist">
+          <li>Profit has outgrown the current structure</li>
+          <li>You are hiring in a second or third state</li>
+          <li>You are bringing on or buying out a partner</li>
+          <li>You operate as a C corporation</li>
+          <li>A sale is plausible within five years</li>
+          <li>A buyer has approached you unsolicited</li>
+          <li>You own the building your business occupies</li>
+        </ul>
+        <a class="btn" href="/contact/">New client application</a>
+        <p style="margin-top:1.4rem;font-size:.9rem">
+          <a href="/fit-check/">Advisor or preparer? Take the fit check &rarr;</a>
+        </p>
+      </aside>
+    </div>
+  </section>
+
+</Base>

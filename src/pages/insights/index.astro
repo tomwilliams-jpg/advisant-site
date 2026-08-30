@@ -1,0 +1,70 @@
+---
+import Base from "../../layouts/Base.astro";
+import { site } from "../../data/site.js";
+import { articles } from "../../data/insights.js";
+
+const title = "Insights | Tax Advisory Writing | Advisant";
+const description =
+  "Practical writing on employer equity, business exit planning, and pass-through entity elections from enrolled agents in Metro Detroit and Denver.";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "@id": `${site.domain}/insights/#blog`,
+  name: "Advisant Insights",
+  description,
+  publisher: { "@id": `${site.domain}/#organization` },
+};
+
+const fmt = (d) =>
+  new Date(d + "T12:00:00").toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+---
+<Base title={title} description={description} path="/insights/" schema={schema}>
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero__grid">
+        <div>
+          <p class="formline formline--onDark">Insights</p>
+          <h1>Answers to the questions that arrive too late.</h1>
+          <p>
+            Most of what costs people money is decided before anyone thinks to ask a tax
+            question. These are the questions worth asking earlier.
+          </p>
+        </div>
+        <aside class="credential">
+          <div class="credential__seal" aria-hidden="true">EA</div>
+          <h2>Written by the people doing the work.</h2>
+          <p>
+            No ghostwriters, no syndicated content. If something here is wrong or has been
+            superseded, tell us and we will fix it.
+          </p>
+          <dl>
+            <dt>Focus</dt><dd>Equity, owners, families</dd>
+            <dt>Cadence</dt><dd>When there is something to say</dd>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="ledger">
+        {articles.map((a) => (
+          <article class="ledger__row article-row">
+            <div>
+              <p class="article-row__topic">{a.topic}</p>
+              <p class="article-row__date">{fmt(a.published)} &middot; {a.minutes} min</p>
+            </div>
+            <div>
+              <h2 class="article-row__title">
+                <a href={`/insights/${a.slug}/`}>{a.title}</a>
+              </h2>
+              <p>{a.dek}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

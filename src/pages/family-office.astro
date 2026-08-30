@@ -1,40 +1,54 @@
 ---
 import Base from "../layouts/Base.astro";
-import { pillars, compliance } from "../data/site.js";
+import { site, pillars, compliance } from "../data/site.js";
+const fo = pillars.find((p) => p.slug === "family-office");
 
-const title = "Family Office Tax Services | Detroit & Denver | Advisant";
+const title = "Family Office Services | Denver & Metro Detroit | Advisant";
 const description =
-  "Consolidated tax planning across operating entities, holding companies, and trusts for families in Metro Detroit and Denver, from IRS-licensed enrolled agents.";
-const fo = pillars[2];
+  "Coordinated planning across tax strategy, wealth management, retirement, estate, and risk for individuals and families whose affairs have outgrown piecemeal advice.";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": `${site.domain}/family-office/#service`,
+  name: "Family Office Services",
+  description,
+  provider: { "@id": `${site.domain}/#organization` },
+  areaServed: [
+    { "@type": "State", name: "Colorado" },
+    { "@type": "State", name: "Michigan" },
+  ],
+};
 ---
-<Base title={title} description={description} path="/family-office/">
+<Base title={title} description={description} path="/family-office/" schema={schema}>
+
   <section class="hero">
     <div class="wrap">
       <div class="hero__grid">
         <div>
-          <p class="formline formline--onDark">Family office</p>
-          <h1>One team holding the whole picture.</h1>
+          <p class="formline formline--onDark">Family Office Services</p>
+          <h1>One plan, holding the whole picture.</h1>
           <p>
-            When a family's affairs span an operating company, a holding entity, a trust or
-            two, and several states, the risk is rarely a single wrong number. It is that no
-            one is looking at all of it at once.
+            Tax, investments, retirement, estate, and risk are usually handled by different
+            people who never speak. Each is competent inside their own lane. Nobody owns the
+            seams — and the seams are where the money is.
           </p>
           <div class="hero__actions">
             <a class="btn" href="/contact/">New client application</a>
-            <a class="btn btn--ghost" href="/tax-advisory/">Advisory services</a>
+            <a class="btn btn--ghost" href="/tax-strategy/">Tax strategy</a>
           </div>
         </div>
         <aside class="credential">
           <div class="credential__seal" aria-hidden="true">EA</div>
-          <h2>Built for complexity, not volume.</h2>
+          <h2>Not only for families.</h2>
           <p>
-            We take on a limited number of family engagements so that the person who knows
-            your structure is the person answering the phone.
+            Individuals with concentrated stock, a business interest, or a retirement
+            transition in view benefit from the same coordination. Complexity is the
+            qualifier, not household size.
           </p>
           <dl>
-            <dt>Scope</dt><dd>Entities, trusts, family</dd>
             <dt>Cadence</dt><dd>Quarterly, plus as needed</dd>
-            <dt>Coordination</dt><dd>Attorney &amp; advisor</dd>
+            <dt>Coordination</dt><dd>Attorney &amp; advisors</dd>
           </dl>
         </aside>
       </div>
@@ -42,57 +56,101 @@ const fo = pillars[2];
   </section>
 
   <section class="band">
+    <div class="wrap">
+      <p class="formline">The model</p>
+      <h2 style="max-width:24ch">You sit at the center. We coordinate the rest.</h2>
+      <p class="measure" style="margin-top:1rem">
+        The Family Office Advantage&trade; organizes six disciplines around a single director
+        &mdash; you &mdash; supported by a partner who coordinates the specialists so their
+        advice reinforces rather than contradicts.
+      </p>
+      <figure class="wheel">
+        <img src="/family-office-advantage.png"
+             alt="The Family Office Advantage: tax strategy, wealth management, retirement planning, risk mitigation, estate planning, and client communication coordinated around the client as Family Office Director."
+             width="778" height="815" loading="lazy" />
+        <figcaption>
+          The Family Office Advantage&trade; and Control the Controllable&reg; are marks of
+          Financial Gravity Family Office Services, LLC, used with permission.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="band band--sunk">
     <div class="wrap split">
       <div class="prose">
-        <p class="formline">What it is</p>
+        <p class="formline">Why it matters</p>
         <h2>The problem is fragmentation, not arithmetic</h2>
         <p>
-          Most families in this position already have good advisors. An attorney who drafted
-          the trusts. An investment advisor managing the portfolio. A preparer filing the
-          returns. Each is competent inside their own lane, and none of them owns the seams.
+          Most people in this position already have good advisors. An attorney who drafted the
+          documents. An investment advisor managing the portfolio. A preparer filing the
+          returns. An agent who wrote the policies. Each is competent. None of them owns what
+          happens between them.
         </p>
         <p>
-          The seams are where the money is. A distribution timed without reference to the
-          owner's other income. A charitable gift made in cash when appreciated stock was
-          sitting in the account. A trust that has been paying tax at compressed rates for
-          years because no one modelled distributing income to beneficiaries instead. An
-          entity that made sense at formation and has been quietly wrong since.
+          A distribution timed without reference to other income. A charitable gift made in
+          cash when appreciated stock was sitting in the account. A portfolio allocated without
+          regard to which account holds what. A trust paying tax at compressed rates for years
+          because nobody modeled distributing income to beneficiaries. An entity that made
+          sense at formation and has been quietly wrong since.
         </p>
         <p>
-          Our role is to sit across those seams — to hold the consolidated view, to bring the
-          other advisors into the same conversation, and to raise the question that falls
-          between two people's remits.
+          Our role is to sit across those seams, hold the consolidated view, bring the other
+          advisors into the same conversation, and raise the question that falls between two
+          people's remits.
         </p>
 
-        <h2>What we handle</h2>
-        <ul>{fo.points.map((x) => <li>{x}</li>)}</ul>
+        <h2>Six disciplines, one plan</h2>
 
-        <h2>Risk management, because wealth creates exposure</h2>
+        <h3>Tax strategy</h3>
         <p>
-          Families in this position face risks that scale with what they own. Wealth attracts
-          claims. Structural complexity — an operating company, rental property, a boat, a
-          teenage driver, a board seat — creates personal liability that sits outside the
-          business and outside most people's coverage. Entity structure, umbrella coverage,
-          and titling either contain that exposure or they do not, and most families have
-          never had anyone look at all three together.
+          Highly appreciated assets, business structuring, asset-location optimization across
+          taxable and tax-deferred accounts, and loss harvesting executed with the whole
+          picture in view rather than account by account.
         </p>
+
+        <h3>Wealth management</h3>
         <p>
-          We review where liability actually sits, and coordinate with your insurance counsel
-          on the gaps. This is not investment risk; it is the kind that arrives as a lawsuit.
+          Cost containment, avoiding concentration you did not choose, and allocation aligned
+          to the risk you actually need to take rather than the risk you could tolerate.
+        </p>
+
+        <h3>Retirement planning</h3>
+        <p>
+          Liquidity alignment, distribution sequencing across account types, Social Security
+          timing, and the tax consequence of each &mdash; which is usually the largest single
+          variable and the least examined.
+        </p>
+
+        <h3>Estate planning</h3>
+        <p>
+          Tax mitigation, specialized trusts, family foundations, and legacy planning, executed
+          with your attorney rather than around them. We handle the fiduciary returns and the
+          gift and generation-skipping reporting that follow.
+        </p>
+
+        <h3>Risk mitigation</h3>
+        <p>
+          Wealth attracts claims, and complexity creates personal liability that sits outside
+          the business and outside most people's coverage. Entity structure, umbrella coverage,
+          and titling either contain that exposure or they do not. Also income stabilization
+          and longevity security &mdash; the risk of outliving the plan.
+        </p>
+
+        <h3>Coordination</h3>
+        <p>
+          The discipline that makes the other five work. One team that knows the whole
+          structure, so you are not the one relaying information between four professionals who
+          have never met.
         </p>
 
         <h2>Planning across generations, not tax years</h2>
         <p>
-          A family office exists because the planning horizon is longer than a filing season.
-          The organising question is what transfers, to whom, and in what form — and every
-          annual decision either serves that or works against it.
-        </p>
-        <p>
-          That means gifting on a schedule rather than in a panic, using the annual exclusion
-          and lifetime exemption deliberately, allocating GST exemption where it will do the
-          most work, and structuring charitable giving so appreciated assets rather than cash
-          fund it. It also means the operating business is prepared for transfer or sale years
-          before either happens.
+          The organizing question is what transfers, to whom, and in what form. Every annual
+          decision either serves that or works against it. That means gifting on a schedule
+          rather than in a panic, deliberate use of the annual exclusion and lifetime
+          exemption, allocating GST exemption where it does the most work, and funding
+          charitable giving with appreciated assets rather than cash.
         </p>
         <p>
           It is not what you make. It is what you keep, and what reaches the next generation
@@ -101,37 +159,41 @@ const fo = pillars[2];
 
         <h2>How engagements run</h2>
         <p>
-          Family engagements are year-round and priced as such. We start with a structural
-          review: every entity, every trust, the ownership chart, the last two years of
-          returns for each, and a conversation with your attorney. That review usually
-          surfaces two or three things worth acting on before it is finished.
+          We start with a structural review: every entity, every trust, the ownership chart,
+          the last two years of returns, the current allocation, and a conversation with your
+          attorney. That review usually surfaces two or three things worth acting on before it
+          is finished.
         </p>
         <p>
-          From there the cadence is quarterly, with estimated payments and cash-flow managed
+          From there the cadence is quarterly, with estimated payments and cash flow managed
           across the whole structure rather than entity by entity, and a planning session
           before year-end while elections are still available.
         </p>
-        <p>
-          We are enrolled agents, which means we can also represent any entity or family
-          member before the IRS directly — in all 50 states, on returns we did not prepare.
-        </p>
+
+        <h2>What we handle</h2>
+        <ul>{fo.points.map((x) => <li>{x}</li>)}</ul>
       </div>
 
       <aside class="facts">
         <p class="formline">A fit if</p>
-        <ul style="list-style:none;margin:0;padding:0;font-size:.95rem">
-          <li style="padding:.6rem 0;border-bottom:1px solid var(--rule)">You file returns for more than three related entities</li>
-          <li style="padding:.6rem 0;border-bottom:1px solid var(--rule)">A trust holds an interest in the operating business</li>
-          <li style="padding:.6rem 0;border-bottom:1px solid var(--rule)">Your advisors do not talk to each other</li>
-          <li style="padding:.6rem 0;border-bottom:1px solid var(--rule)">Charitable giving is meaningful and unstructured</li>
-          <li style="padding:.6rem 0">A generational transfer is in view</li>
+        <ul class="ticklist">
+          <li>Your advisors do not talk to each other</li>
+          <li>You hold concentrated or highly appreciated stock</li>
+          <li>A trust holds an interest in a business</li>
+          <li>You file returns for several related entities</li>
+          <li>Charitable giving is meaningful and unstructured</li>
+          <li>A retirement transition is within a decade</li>
+          <li>A generational transfer is in view</li>
         </ul>
-        <a class="btn" href="/contact/">Start a conversation</a>
+        <a class="btn" href="/contact/">New client application</a>
+        <p style="margin-top:1.4rem;font-size:.9rem">
+          <a href="/fit-check/">Advisor or preparer? Take the fit check &rarr;</a>
+        </p>
       </aside>
     </div>
   </section>
 
-  <section class="band band--sunk">
+  <section class="band">
     <div class="wrap measure">
       <p class="formline">Important disclosures</p>
       <p class="disclosure">{compliance.rlaLine}</p>
@@ -142,4 +204,5 @@ const fo = pillars[2];
       </p>
     </div>
   </section>
+
 </Base>
