@@ -81,7 +81,7 @@ export const team = [
     title: "Managing Partner · Co-founder",
     photo: "/tom.jpg",
     school: "Michigan State University, B.A. Accounting",
-    bio: "Tom's practice centers on strategic tax planning, IRS representation, and Employer Equity planning — the work that happens before a return is filed rather than after. He is an enrolled agent licensed by the Internal Revenue Service. Earlier in his career he volunteered through the IRS-certified VITA program, preparing returns for taxpayers who could not otherwise afford representation.",
+    bio: "Tom's practice centers on strategic tax planning, IRS representation, and employer equity planning — the work that happens before a return is filed rather than after. He is an enrolled agent licensed by the Internal Revenue Service. Earlier in his career he volunteered through the IRS-certified VITA program, preparing returns for taxpayers who could not otherwise afford representation.",
   },
   {
     name: "Timothy V. Whalen, EA",
@@ -137,7 +137,7 @@ export const pillars = [
       "83(b) elections filed inside the 30-day window, with the mailing evidence retained",
       "Qualified small business stock: tracking the five-year hold and the gross-asset test from the start",
       "Disqualifying dispositions, ESPP ordinary-income splits, and the cost-basis errors brokers report",
-      "Withholding shortfalls on RSU vests, which is where most Employer Equity holders get an unexpected bill",
+      "Withholding shortfalls on RSU vests, which is where most equity holders get an unexpected bill",
       "Acceleration clauses and the $100,000 ISO limit in a change of control",
     ],
   },
@@ -155,7 +155,7 @@ export const serviceGroups = [
       },
       {
         title: "Individual tax preparation",
-        body: "Federal, state, and local returns for owners, executives with Employer Equity, investors, and households filing across more than one state.",
+        body: "Federal, state, and local returns for owners, executives with equity compensation, investors, and households filing across more than one state.",
       },
       {
         title: "Payroll and employer compliance",
@@ -272,7 +272,7 @@ export const faqs = [
   },
   {
     q: "When should I start working with a tax advisor rather than a preparer?",
-    a: "When decisions start driving your tax bill more than deductions do. Employer Equity you have not exercised, an entity that may be the wrong one, a sale in view within a few years, income in more than one state, or a trust that owns part of the business — those are all decided before a return is prepared and cannot be fixed afterward.",
+    a: "When decisions start driving your tax bill more than deductions do. Employer equity you have not exercised, an entity that may be the wrong one, a sale in view within a few years, income in more than one state, or a trust that owns part of the business — those are all decided before a return is prepared and cannot be fixed afterward.",
   },
   {
     q: "Do you handle IRS notices and audits?",
