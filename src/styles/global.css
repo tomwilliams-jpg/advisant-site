@@ -484,7 +484,7 @@ iframe { max-width: 100%; border: 1px solid var(--rule); border-radius: var(--r-
 
 /* ── Family Office Advantage diagram ────────────────────── */
 .wheel { margin: 2.5rem 0 0; text-align: center; }
-.wheel img { width: 100%; max-width: 620px; height: auto; }
+.wheel img { width: 100%; max-width: 760px; height: auto; }
 .wheel figcaption {
   font-size: .8rem; color: var(--muted); max-width: 60ch;
   margin: 1.25rem auto 0; line-height: 1.55;

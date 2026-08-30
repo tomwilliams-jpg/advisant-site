@@ -117,14 +117,14 @@ export const pillars = [
     slug: "family-office",
     href: "/family-office/",
     title: "Family Office Services",
-    lede: "One coordinated plan across tax, wealth management, retirement, estate, and risk \u2014 for families and for individuals whose affairs have outgrown piecemeal advice.",
+    lede: "One coordinated plan across tax strategy, wealth management, risk mitigation, retirement, and estate \u2014 for individuals and families whose affairs have outgrown piecemeal advice.",
     points: [
-      "Tax strategy: highly appreciated assets, business structuring, asset-location optimization, loss harvesting",
-      "Wealth management: cost containment, concentration avoidance, risk-aligned allocation",
-      "Retirement planning: risk and liquidity alignment, Social Security strategy, distribution sequencing",
-      "Estate planning: tax mitigation, family foundations, specialized trusts, legacy planning",
+      "Tax strategy: highly appreciated assets, asset-location optimization, loss harvesting, business structuring",
+      "Wealth management: Control the Controllables\u00ae, concentration avoidance, cost containment, risk-aligned allocation",
       "Risk mitigation: income stabilization, asset protection, longevity security",
-      "Coordination across your attorney, investment advisor, and insurance counsel so advice does not conflict",
+      "Retirement planning: risk and liquidity alignment, Social Security strategy, Time Optimized Planning\u2122",
+      "Estate planning: tax mitigation, specialized trusts, family foundations, coordinated legal",
+      "A Family Office Director, Family Office Partner, and Client Success Team as your direct contacts",
     ],
   },
   {
@@ -137,7 +137,7 @@ export const pillars = [
       "83(b) elections filed inside the 30-day window, with the mailing evidence retained",
       "Qualified small business stock: tracking the five-year hold and the gross-asset test from the start",
       "Disqualifying dispositions, ESPP ordinary-income splits, and the cost-basis errors brokers report",
-      "Withholding shortfalls on RSU vests, which is where most equity holders get an unexpected bill",
+      "Withholding shortfalls on RSU vests, which is where most Employer Equity holders get an unexpected bill",
       "Acceleration clauses and the $100,000 ISO limit in a change of control",
     ],
   },
@@ -155,7 +155,7 @@ export const serviceGroups = [
       },
       {
         title: "Individual tax preparation",
-        body: "Federal, state, and local returns for owners, executives with equity, investors, and households filing across more than one state.",
+        body: "Federal, state, and local returns for owners, executives with Employer Equity, investors, and households filing across more than one state.",
       },
       {
         title: "Payroll and employer compliance",
@@ -272,7 +272,7 @@ export const faqs = [
   },
   {
     q: "When should I start working with a tax advisor rather than a preparer?",
-    a: "When decisions start driving your tax bill more than deductions do. Equity you have not exercised, an entity that may be the wrong one, a sale in view within a few years, income in more than one state, or a trust that owns part of the business — those are all decided before a return is prepared and cannot be fixed afterward.",
+    a: "When decisions start driving your tax bill more than deductions do. Employer Equity you have not exercised, an entity that may be the wrong one, a sale in view within a few years, income in more than one state, or a trust that owns part of the business — those are all decided before a return is prepared and cannot be fixed afterward.",
   },
   {
     q: "Do you handle IRS notices and audits?",
