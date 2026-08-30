@@ -53,9 +53,9 @@ const canonical = site.domain + path;
       {!site.logo && <span>Enrolled Agents · Michigan &amp; Colorado</span>}
     </a>
     <nav class="nav" aria-label="Main">
-      <a href="/family-office/" aria-current={path === "/family-office/" ? "page" : undefined}>Family Office</a>
       <a href="/tax-strategy/" aria-current={path === "/tax-strategy/" ? "page" : undefined}>Tax Strategy</a>
-      <a href="/equity-compensation/" aria-current={path === "/equity-compensation/" ? "page" : undefined}>Equity</a>
+      <a href="/family-office/" aria-current={path === "/family-office/" ? "page" : undefined}>Family Office</a>
+      <a href="/equity-compensation/" aria-current={path === "/equity-compensation/" ? "page" : undefined}>Employer Equity</a>
       <a href="/services/" aria-current={path === "/services/" ? "page" : undefined}>Services</a>
       <a href="/insights/" aria-current={path.startsWith("/insights") ? "page" : undefined}>Insights</a>
       <a href="/meet-our-team/" aria-current={path === "/meet-our-team/" ? "page" : undefined}>Team</a>
@@ -95,8 +95,8 @@ const canonical = site.domain + path;
       <div>
         <h4>Firm</h4>
         <ul>
-          <li><a href="/family-office/">Family Office Services</a></li>
           <li><a href="/tax-strategy/">Tax Strategy</a></li>
+          <li><a href="/family-office/">Family Office Services</a></li>
           <li><a href="/equity-compensation/">Employer Equity Planning</a></li>
           <li><a href="/services/">All Services</a></li>
           <li><a href="/insights/">Insights</a></li>

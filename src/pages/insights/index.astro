@@ -54,6 +54,7 @@ const fmt = (d) =>
           <article class="ledger__row article-row">
             <div>
               <p class="article-row__topic">{a.topic}</p>
+              {a.scope && <p class="article-row__scope">{a.scope}</p>}
               <p class="article-row__date">{fmt(a.published)} &middot; {a.minutes} min</p>
             </div>
             <div>

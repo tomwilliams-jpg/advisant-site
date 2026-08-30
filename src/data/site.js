@@ -18,11 +18,15 @@ export const site = {
   gbpName: "Advisant Financial",
   legalName: "Advisant Financial, LLC",
   shortName: "Advisant Financial",
-  portalUrl: "https://advisantfinancial.taxdome.com",
+  // The branded portal URL is in TaxDome under Settings > Firm settings.
+  // Your current one resolves to the old website because a custom domain is
+  // configured there — that mapping also breaks at DNS cutover. app.taxdome.com
+  // always works; swap in the branded URL once you have confirmed it.
+  portalUrl: "https://app.taxdome.com/login",
   // No public email by design — inquiries route through the TaxDome application.
   // NOTE: the current /app/signup path is served by TaxDome on your domain and
   // WILL BREAK at DNS cutover. This is the taxdome.com-hosted equivalent.
-  applyUrl: "https://advisantfinancial.taxdome.com/app/signup",
+  applyUrl: "https://app.taxdome.com/signup",  // TODO: confirm against your firm portal URL
   founded: "TODO_YEAR",
   // The current Contact page states: no walk-ins, no unscheduled calls.
   // Kept below so the site and the Google listings tell the same story.
@@ -89,20 +93,6 @@ export const team = [
 // Three advisory pillars, in the order they appear on the homepage.
 export const pillars = [
   {
-    slug: "family-office",
-    href: "/family-office/",
-    title: "Family Office Services",
-    lede: "One coordinated plan across tax, wealth management, retirement, estate, and risk \u2014 for families and for individuals whose affairs have outgrown piecemeal advice.",
-    points: [
-      "Tax strategy: highly appreciated assets, business structuring, asset-location optimization, loss harvesting",
-      "Wealth management: cost containment, concentration avoidance, risk-aligned allocation",
-      "Retirement planning: risk and liquidity alignment, Social Security strategy, distribution sequencing",
-      "Estate planning: tax mitigation, family foundations, specialized trusts, legacy planning",
-      "Risk mitigation: income stabilization, asset protection, longevity security",
-      "Coordination across your attorney, investment advisor, and insurance counsel so advice does not conflict",
-    ],
-  },
-  {
     slug: "tax-strategy",
     href: "/tax-strategy/",
     title: "Tax Strategy for Business Owners",
@@ -119,6 +109,20 @@ export const pillars = [
       "Multi-state nexus, apportionment, and registration as remote staff are added",
       "Basis and accumulated adjustments cleaned up years before a sale",
       "Exit structure: asset versus stock, price allocation, installment treatment, residency, charitable timing",
+    ],
+  },
+  {
+    slug: "family-office",
+    href: "/family-office/",
+    title: "Family Office Services",
+    lede: "One coordinated plan across tax, wealth management, retirement, estate, and risk \u2014 for families and for individuals whose affairs have outgrown piecemeal advice.",
+    points: [
+      "Tax strategy: highly appreciated assets, business structuring, asset-location optimization, loss harvesting",
+      "Wealth management: cost containment, concentration avoidance, risk-aligned allocation",
+      "Retirement planning: risk and liquidity alignment, Social Security strategy, distribution sequencing",
+      "Estate planning: tax mitigation, family foundations, specialized trusts, legacy planning",
+      "Risk mitigation: income stabilization, asset protection, longevity security",
+      "Coordination across your attorney, investment advisor, and insurance counsel so advice does not conflict",
     ],
   },
   {
@@ -229,6 +233,11 @@ export const reviews = [
     name: "",
     pull: "Our tax situation is constantly changing and he's been very helpful teaching us how to navigate.",
     quote: "Tom has been an outstanding tax advisor for our family for the past 3 years. Our tax situation is constantly changing and he's been very helpful teaching us how to navigate. With the ever changing tax laws and our increasingly complicated filings we are so happy to work with Advisant. We highly recommend Tom to help you!",
+  },
+  {
+    name: "",
+    pull: "He helped us upfront, before filing, to make sure we were documenting correctly.",
+    quote: "I have been a client of Tom's now for a little over a year now. His attention to detail, patience and knowledge has helped tax season stress be at ease knowing the job is getting done properly! Tom has also helped us upfront prior to filing to make sure we are documenting costs and expenses correctly to make this easier on both ends! I'm thankful to have met Tom and to have his expertise in my corner.",
   },
   {
     name: "",

@@ -333,7 +333,7 @@ iframe { max-width: 100%; border: 1px solid var(--rule); border-radius: var(--r-
 .skip:focus { left: .75rem; top: .75rem; color: #fff; }
 
 /* ── Reviews ────────────────────────────────────────────── */
-.reviews { display: grid; gap: 1.75rem; margin-top: 2.5rem; }
+.reviews { display: grid; gap: 1.75rem; margin-top: 2.5rem; align-items: stretch; }
 @media (min-width: 820px) { .reviews { grid-template-columns: 1fr 1fr; gap: 2rem 2.5rem; } }
 .review {
   background: #fff; border: 1px solid var(--rule);
@@ -367,12 +367,12 @@ iframe { max-width: 100%; border: 1px solid var(--rule); border-radius: var(--r-
 /* ── People ─────────────────────────────────────────────── */
 .person { border-top: 1px solid #9AA4B5; padding-top: 1.6rem; }
 .person__photo {
-  width: 100%; max-width: 240px; aspect-ratio: 1; object-fit: cover; border-radius: var(--r-lg);
-  display: block; margin-bottom: 1.35rem; filter: grayscale(1) contrast(1.04);
+  width: 100%; max-width: 260px; height: auto;
+  border-radius: var(--r-lg); display: block; margin-bottom: 1.35rem;
 }
 /* Placeholder until real headshots are supplied — deliberately obvious. */
 .person__monogram {
-  width: 100%; max-width: 240px; aspect-ratio: 1;
+  width: 100%; max-width: 260px; aspect-ratio: 5 / 7;
   display: grid; place-items: center; margin-bottom: 1.35rem;
   border: 1px dashed var(--rule); background: #fff; border-radius: var(--r-lg);
   color: var(--muted); font-size: .85rem; font-weight: 600;
@@ -389,8 +389,9 @@ iframe { max-width: 100%; border: 1px solid var(--rule); border-radius: var(--r-
   background: radial-gradient(90% 140% at 85% 50%, rgba(0,116,255,.20) 0%, transparent 60%);
 }
 .statement > .wrap { position: relative; }
-.pulls { display: grid; gap: 2rem 2.75rem; margin-top: 1.75rem; }
-@media (min-width: 900px) { .pulls { grid-template-columns: repeat(3, 1fr); } }
+.pulls { display: grid; gap: 2rem 2.5rem; margin-top: 1.75rem; }
+@media (min-width: 720px) { .pulls { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .pulls { grid-template-columns: repeat(4, 1fr); } }
 .pull { margin: 0; padding-top: 1.25rem; border-top: 1px solid #33507C; }
 .pull p {
   font-family: var(--display); font-weight: 400;
@@ -502,4 +503,10 @@ iframe { max-width: 100%; border: 1px solid var(--rule); border-radius: var(--r-
 .servicelist li::before {
   content: ""; position: absolute; left: 0; top: 1.05rem;
   width: 6px; height: 6px; border-radius: 50%; background: var(--blue);
+}
+
+.article-row__scope {
+  display: inline-block; margin: .35rem 0 .3rem; font-size: .78rem; font-weight: 600;
+  color: var(--muted); background: var(--paper-2);
+  border-radius: 999px; padding: .2rem .6rem;
 }

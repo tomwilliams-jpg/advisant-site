@@ -1,5 +1,7 @@
 // Article index. Add an entry here when you publish a new piece, and create the
 // matching file at src/pages/insights/<slug>.astro.
+// Order matters — the first entry leads the index page, so keep a
+// nationally relevant piece at the top rather than a state-specific one.
 export const articles = [
   {
     slug: "iso-tax-when-your-company-is-acquired",
@@ -10,6 +12,7 @@ export const articles = [
     updated: "2026-08-28",
     minutes: 9,
     topic: "Employer equity",
+    scope: "Nationwide",
   },
   {
     slug: "michigan-flow-through-entity-tax-s-corp-owners",
@@ -20,5 +23,6 @@ export const articles = [
     updated: "2026-08-28",
     minutes: 8,
     topic: "Business owners",
+    scope: "Michigan",
   },
 ];
