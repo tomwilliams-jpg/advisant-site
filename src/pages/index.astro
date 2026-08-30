@@ -4,7 +4,7 @@ import { site, michigan, colorado, serviceGroups, pillars, reviews, reviewSource
 
 const title = "Tax Advisory Firm | Denver & Metro Detroit | Advisant";
 const description =
-  "Tax advisory firm for business owners, equity holders, and families in Metro Detroit and Denver. Enrolled agents licensed to represent you before the IRS.";
+  "Tax advisory firm for business owners, equity holders, and families in Denver and Metro Detroit. Enrolled agents licensed to represent you before the IRS.";
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -24,8 +24,8 @@ const schema = {
   url: site.domain,
   description,
   areaServed: [
-    { "@type": "State", name: "Michigan" },
     { "@type": "State", name: "Colorado" },
+    { "@type": "State", name: "Michigan" },
   ],
   department: [
     { "@id": `${site.domain}/${michigan.slug}/#office` },
@@ -43,11 +43,11 @@ const schema = {
           <h1>Advice while the decisions are still open.</h1>
           <p>
             Advisant Financial is a tax advisory firm for business owners, equity holders,
-            and families in {michigan.metro} and {colorado.city}. We are enrolled agents,
+            and families in {colorado.city} and {michigan.metro}. We are enrolled agents,
             licensed to represent you before the IRS in all 50 states.
           </p>
           <div class="hero__actions">
-            <a class="btn" href="/contact/">New client application</a>
+            <a class="btn" href={site.applyUrl}>Schedule a consultation</a>
             <a class="btn btn--ghost" href="/services/">What we do</a>
           </div>
         </div>
@@ -130,7 +130,6 @@ const schema = {
           </blockquote>
         ))}
       </div>
-      <p class="testimonial-disclosure">{compliance.testimonialDisclosure}</p>
       <p style="margin-top:1.75rem"><a href={reviewSource.url}>{reviewSource.label} &rarr;</a></p>
     </div>
   </section>
@@ -167,7 +166,7 @@ const schema = {
           <li style="padding:.6rem 0;border-bottom:1px solid var(--rule)">Anyone filing in more than one state</li>
           <li style="padding:.6rem 0">Employers with remote staff and nexus questions</li>
         </ul>
-        <a class="btn" href="/contact/">New client application</a>
+        <a class="btn" href={site.applyUrl}>Schedule a consultation</a>
       </aside>
     </div>
   </section>

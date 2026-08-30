@@ -34,7 +34,7 @@ const schema = {
             seams — and the seams are where the money is.
           </p>
           <div class="hero__actions">
-            <a class="btn" href="/contact/">New client application</a>
+            <a class="btn" href={site.applyUrl}>Schedule a consultation</a>
             <a class="btn btn--ghost" href="/tax-strategy/">Tax strategy</a>
           </div>
         </div>
@@ -58,19 +58,27 @@ const schema = {
   <section class="band">
     <div class="wrap">
       <p class="formline">The model</p>
-      <h2 style="max-width:24ch">You sit at the center. We coordinate the rest.</h2>
+      <h2 style="max-width:26ch">A Family Office Director, coordinating the specialists.</h2>
       <p class="measure" style="margin-top:1rem">
-        The Family Office Advantage&trade; organizes six disciplines around a single director
-        &mdash; you &mdash; supported by a partner who coordinates the specialists so their
+        Tom Williams serves as your Family Office Director. That role sits at the center of
+        The Family Office Advantage&trade; and coordinates six disciplines &mdash; tax
+        strategy, wealth management, retirement planning, risk mitigation, estate planning,
+        and client communication &mdash; along with the specialist teams behind each, so their
         advice reinforces rather than contradicts.
+      </p>
+      <p class="measure">
+        The point is that you stop being the person relaying information between four
+        professionals who have never met.
       </p>
       <figure class="wheel">
         <img src="/family-office-advantage.png"
-             alt="The Family Office Advantage: tax strategy, wealth management, retirement planning, risk mitigation, estate planning, and client communication coordinated around the client as Family Office Director."
+             alt="The Family Office Advantage: tax strategy, wealth management, retirement planning, risk mitigation, estate planning, and client communication, coordinated by a Family Office Director supported by tax and legal, investment, planning and analysis, compliance, client success, and client communication teams."
              width="778" height="815" loading="lazy" />
         <figcaption>
-          The Family Office Advantage&trade; and Control the Controllable&reg; are marks of
-          Financial Gravity Family Office Services, LLC, used with permission.
+          The Family Office Director role shown at the center is held by Tom Williams. The
+          Family Office Advantage&trade;, Control the Controllable&reg;, and Taxes First, Then
+          Math&reg; are marks of Financial Gravity Family Office Services, LLC, used with
+          permission.
         </figcaption>
       </figure>
     </div>
@@ -98,6 +106,67 @@ const schema = {
           Our role is to sit across those seams, hold the consolidated view, bring the other
           advisors into the same conversation, and raise the question that falls between two
           people's remits.
+        </p>
+
+        <h2>What is a family office?</h2>
+        <p>
+          The wealthiest Americans are also the most successful investors, and that is neither
+          a secret nor a coincidence. They are served by family offices: a structure that
+          integrates tax, wealth, and risk management into one cohesive experience.
+        </p>
+        <p>
+          In ordinary financial services, advice is segregated into very specific areas of
+          expertise rather than connected across disciplines. The result is conflicts, higher
+          costs, and inefficiency from working with multiple, often competing firms. The same
+          integrated approach once reserved for the ultra-wealthy is now available far more
+          broadly &mdash; to households, individuals, and business owners.
+        </p>
+
+        <h2>What you can expect</h2>
+
+        <h3>Proactive tax planning</h3>
+        <p>
+          Most financial professionals neglect this discipline. We believe it is not what you
+          make but what you keep that matters. Taxes are a drag on portfolio performance,
+          wealth accumulation, and lifestyle choices, and we work to lower them in ways that
+          are legal, moral, and ethical.
+        </p>
+
+        <h3>Control the Controllable&reg;</h3>
+        <p>
+          The financial services industry spends enormous effort trying to control things that
+          cannot be predicted &mdash; market direction, volatility, inflation, interest rates.
+          Our approach focuses on what can be controlled: costs, tax efficiency,
+          diversification, and maximum loss exposure.
+        </p>
+
+        <h3>Multi-generational focus</h3>
+        <p>
+          Long-term planning is the norm among family offices, with the goal of maximizing
+          wealth transfer to succeeding generations or, in many cases, making an impact through
+          charitable giving.
+        </p>
+
+        <h3>Risk management</h3>
+        <p>
+          Risks are magnified for the simple reason that you have more to protect. Wealth can
+          make you a target, and the complexity of your holdings can create unwanted personal
+          liabilities &mdash; exposure that careful planning manages.
+        </p>
+
+        <h3>Prudence and discipline</h3>
+        <p>
+          As a general rule, family offices do not take uncompensated risks. They avoid
+          speculation, preferring an institutional approach to asset allocation and portfolio
+          management, and accept the ups and downs of markets in exchange for long-term wealth
+          building.
+        </p>
+
+        <h3>Best interests standard</h3>
+        <p>
+          Also known as the fiduciary rule. We follow this standard and put the interests and
+          welfare of our clients first, searching for and implementing only what we believe are
+          the most beneficial solutions for the unique needs of the people we serve.
         </p>
 
         <h2>Six disciplines, one plan</h2>
@@ -185,7 +254,7 @@ const schema = {
           <li>A retirement transition is within a decade</li>
           <li>A generational transfer is in view</li>
         </ul>
-        <a class="btn" href="/contact/">New client application</a>
+        <a class="btn" href={site.applyUrl}>Schedule a consultation</a>
         <p style="margin-top:1.4rem;font-size:.9rem">
           <a href="/fit-check/">Advisor or preparer? Take the fit check &rarr;</a>
         </p>
@@ -194,6 +263,21 @@ const schema = {
   </section>
 
   <section class="band">
+    <div class="wrap measure">
+      <p class="formline">Where to start</p>
+      <h2>Taxes First, Then Math&reg;</h2>
+      <p>
+        Most plans are built on returns and then taxed as an afterthought. We work the other
+        way around, because the tax treatment of a portfolio is knowable in advance and market
+        returns are not.
+      </p>
+      <p style="margin-top:1.5rem">
+        <a class="btn" href={site.applyUrl}>Schedule a consultation</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="band band--sunk">
     <div class="wrap measure">
       <p class="formline">Important disclosures</p>
       <p class="disclosure">{compliance.rlaLine}</p>

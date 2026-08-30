@@ -26,7 +26,9 @@ export const site = {
   // No public email by design — inquiries route through the TaxDome application.
   // NOTE: the current /app/signup path is served by TaxDome on your domain and
   // WILL BREAK at DNS cutover. This is the taxdome.com-hosted equivalent.
-  applyUrl: "https://app.taxdome.com/signup",  // TODO: confirm against your firm portal URL
+  // Verified working. If you would rather send prospects to the TaxDome new-client
+  // application, get that URL from TaxDome and swap it in here.
+  applyUrl: "https://calendly.com/advisantfinancial",
   founded: "TODO_YEAR",
   // The current Contact page states: no walk-ins, no unscheduled calls.
   // Kept below so the site and the Google listings tell the same story.
@@ -79,7 +81,7 @@ export const team = [
     title: "Managing Partner · Co-founder",
     photo: "/tom.jpg",
     school: "Michigan State University, B.A. Accounting",
-    bio: "Tom's practice centers on strategic tax planning, IRS representation, and employer equity planning — the work that happens before a return is filed rather than after. He is an enrolled agent licensed by the Internal Revenue Service. Earlier in his career he volunteered through the IRS-certified VITA program, preparing returns for taxpayers who could not otherwise afford representation.",
+    bio: "Tom's practice centers on strategic tax planning, IRS representation, and Employer Equity planning — the work that happens before a return is filed rather than after. He is an enrolled agent licensed by the Internal Revenue Service. Earlier in his career he volunteered through the IRS-certified VITA program, preparing returns for taxpayers who could not otherwise afford representation.",
   },
   {
     name: "Timothy V. Whalen, EA",
@@ -101,7 +103,7 @@ export const pillars = [
       "Entity selection and conversion, including when an S election stops earning its keep",
       "Reasonable compensation set defensibly, with contemporaneous support",
       "Retirement plan design: solo 401(k), SEP, cash balance, and defined benefit plans sized to actual capacity",
-      "Pass-through entity elections in Michigan and Colorado, modeled per owner rather than elected by default",
+      "Pass-through entity elections in Colorado and Michigan, modeled per owner rather than elected by default",
       "Accounting method, inventory, and timing elections that shift income between years",
       "Depreciation strategy: bonus, Section 179, cost segregation on owned real estate",
       "Qualified business income planning around the wage and property limitations",
@@ -191,7 +193,7 @@ export const serviceGroups = [
       },
       {
         title: "State tax controversy",
-        body: "Michigan and Colorado notices, residency challenges, and multi-state nexus disputes.",
+        body: "Colorado and Michigan notices, residency challenges, and multi-state nexus disputes.",
       },
     ],
   },
@@ -261,8 +263,8 @@ export const faqs = [
     a: "An enrolled agent is licensed by the U.S. Department of the Treasury rather than by a state board. EAs earn the credential by passing a three-part IRS examination covering individual tax, business tax, and representation. The practical difference is scope: enrolled agents hold unlimited practice rights before the IRS in all 50 states, on any return, whether or not we prepared it. A CPA license is issued by one state and covers audit and attest work we do not perform.",
   },
   {
-    q: "Do you work with clients outside Michigan and Colorado?",
-    a: "Yes. We have offices in Metro Detroit and Denver, and we prepare returns and represent clients nationwide. Most of our work is done remotely through a secure portal with e-signature, so location rarely determines fit. Complexity does.",
+    q: "Do you work with clients outside Colorado and Michigan?",
+    a: "Yes. We have offices in Denver and Metro Detroit, and we prepare returns and represent clients nationwide. Most of our work is done remotely through a secure portal with e-signature, so location rarely determines fit. Complexity does.",
   },
   {
     q: "What does an engagement cost?",

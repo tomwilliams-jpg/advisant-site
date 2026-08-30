@@ -11,7 +11,7 @@ export const articles = [
     published: "2026-08-28",
     updated: "2026-08-28",
     minutes: 9,
-    topic: "Employer equity",
+    topic: "Employer Equity",
     scope: "Nationwide",
   },
   {

@@ -1,6 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
-import { team } from "../data/site.js";
+import { site, team } from "../data/site.js";
 
 const title = "Meet Our Team | Advisant Financial, LLC";
 const description =
@@ -18,7 +18,7 @@ const description =
             you spoke to about it, and the person who will stand behind it if the IRS asks.
           </p>
           <div class="hero__actions">
-            <a class="btn" href="/contact/">New client application</a>
+            <a class="btn" href={site.applyUrl}>Schedule a consultation</a>
           </div>
         </div>
         <aside class="credential">
