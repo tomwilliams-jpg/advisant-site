@@ -224,7 +224,7 @@ export const compliance = {
   compliancePhone: "800-588-3893",
   // Rule 206(4)-1 requires these facts clear and prominent ALONGSIDE any testimonial.
   testimonialDisclosure:
-    "The statements below are from clients of Advisant Financial, LLC and describe tax preparation, tax planning, and representation services. They do not describe investment advisory services and are not representative of any client\u2019s experience with investment advisory services. No cash or non-cash compensation was provided for any statement. Statements are not necessarily representative of the experience of other clients and are not a guarantee of future results. A conflict of interest exists to the extent that a favorable statement may reflect positively on the firm and its principals.",
+    "The statements above are from clients of Advisant Financial, LLC and describe tax preparation, tax planning, and representation services. They do not describe investment advisory services and are not representative of any client\u2019s experience with investment advisory services. No cash or non-cash compensation was provided for any statement. Statements are not necessarily representative of the experience of other clients and are not a guarantee of future results. A conflict of interest exists to the extent that a favorable statement may reflect positively on the firm and its principals.",
 };
 
 // ── Client reviews ──────────────────────────────────────────

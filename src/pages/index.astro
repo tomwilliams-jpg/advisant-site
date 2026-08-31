@@ -1,6 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
-import { site, michigan, colorado, serviceGroups, pillars, reviews, reviewSource, faqs, compliance } from "../data/site.js";
+import { site, michigan, colorado, pillars, reviews, reviewSource, faqs, compliance, team } from "../data/site.js";
 
 const title = "Tax Advisory Firm | Denver & Metro Detroit | Advisant";
 const description =
@@ -96,7 +96,12 @@ const schema = {
 
   <section class="statement">
     <div class="wrap">
-      <p class="formline formline--onDark">In their words</p>
+      <p class="formline formline--onDark">What clients say</p>
+      <p class="rating-line rating-line--onDark">
+        <strong>{reviewSource.rating}</strong>
+        <span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span>{reviewSource.count} reviews on Google</span>
+      </p>
       <div class="pulls">
         {reviews.map((r) => (
           <blockquote class="pull">
@@ -104,35 +109,7 @@ const schema = {
           </blockquote>
         ))}
       </div>
-      <p class="pull__note">
-        Statements from tax clients of Advisant Financial, LLC describing tax services. Not a
-        description of investment advisory services. No compensation was provided. Not
-        representative of all clients.
-      </p>
-    </div>
-  </section>
-
-  <section class="band band--sunk">
-    <div class="wrap">
-      <p class="formline">What clients say</p>
-      <h2 style="max-width:24ch">A five-star rating across every review we have received.</h2>
-      <p class="rating-line" style="margin-top:1.25rem">
-        <strong>{reviewSource.rating}</strong>
-        <span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-        <span>{reviewSource.count} reviews on Google</span>
-      </p>
-      <p class="disclosure disclosure--lead">{compliance.testimonialDisclosure}</p>
-      <div class="reviews">
-        {reviews.map((r) => (
-          <blockquote class="review">
-            <p>{r.quote}</p>
-            <footer>{r.name ? r.name + " \u2014 " : ""}Client statement, Google review. Tax services. Uncompensated.</footer>
-          </blockquote>
-        ))}
-      </div>
-      {reviewSource.url && !reviewSource.url.endsWith("goo.gl/") && (
-        <p style="margin-top:1.75rem"><a href={reviewSource.url}>{reviewSource.label} &rarr;</a></p>
-      )}
+      <p class="pull__note">{compliance.testimonialDisclosure}</p>
     </div>
   </section>
 
@@ -175,25 +152,35 @@ const schema = {
   </section>
 
   <section class="band">
-    <div class="wrap">
-      <p class="formline">Compliance and representation</p>
-      <h2>The rest of the work, done properly.</h2>
-      <div class="ledger">
-        {serviceGroups.map((g) => (
-          <div class="ledger__group">
-            <div class="ledger__head">
-              <h3>{g.group}</h3>
-            </div>
-            {g.items.map((s) => (
-              <div class="ledger__row">
-                <h4>{s.title}</h4>
-                <p>{s.body}</p>
-              </div>
-            ))}
-          </div>
-        ))}
+    <div class="wrap split">
+      <div class="prose">
+        <p class="formline">Compliance and representation</p>
+        <h2>The rest of the work, done properly.</h2>
+        <p>
+          Business and individual returns, trust and estate filings, gift and transfer
+          reporting, entity elections, payroll and employer compliance, and full IRS
+          representation &mdash; examinations, appeals, and collections, in all 50 states,
+          including on returns we did not prepare.
+        </p>
+        <p><a href="/services/">Every service in detail &rarr;</a></p>
       </div>
-      <p style="margin-top:2.5rem"><a href="/services/">Full detail on each service &rarr;</a></p>
+
+      <aside class="people-card">
+        <p class="formline">Who you work with</p>
+        <div class="people-card__row">
+          {team.map((m) => (
+            <a class="person-mini" href="/meet-our-team/">
+              <img src={m.photo} alt={m.name} width="500" height="700" loading="lazy" />
+              <span class="person-mini__name">{m.name.split(",")[0]}</span>
+              <span class="person-mini__role">Enrolled Agent</span>
+            </a>
+          ))}
+        </div>
+        <p class="people-card__note">
+          Two partners, no account managers. The person who advises on a position is the
+          person who defends it.
+        </p>
+      </aside>
     </div>
   </section>
 
@@ -202,7 +189,7 @@ const schema = {
       <p class="formline">Common questions</p>
       <h2>Before you get in touch</h2>
       <div class="faq">
-        {faqs.map((f) => (
+        {faqs.slice(0, 4).map((f) => (
           <details>
             <summary>{f.q}</summary>
             <p class="answer">{f.a}</p>

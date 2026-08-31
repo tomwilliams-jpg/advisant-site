@@ -510,3 +510,24 @@ iframe { max-width: 100%; border: 1px solid var(--rule); border-radius: var(--r-
   color: var(--muted); background: var(--paper-2);
   border-radius: 999px; padding: .2rem .6rem;
 }
+
+/* ── Partners card (homepage) ───────────────────────────── */
+.people-card {
+  border: 1px solid var(--rule); background: #fff;
+  border-radius: var(--r-lg); padding: 1.65rem 1.6rem; align-self: start;
+}
+.people-card__row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: .25rem; }
+.person-mini { text-decoration: none; display: block; }
+.person-mini img {
+  width: 100%; height: auto; border-radius: var(--r-md); display: block; margin-bottom: .7rem;
+}
+.person-mini__name { display: block; font-weight: 600; font-size: .97rem; color: var(--ink); }
+.person-mini__role { display: block; font-size: .85rem; color: var(--muted); }
+.person-mini:hover .person-mini__name { color: var(--blue-ink); }
+.people-card__note {
+  margin: 1.35rem 0 0; padding-top: 1.1rem; border-top: 1px solid var(--rule);
+  font-size: .92rem; color: #4A5261;
+}
+.rating-line--onDark { color: #A3B5CE; margin: .25rem 0 0; }
+.rating-line--onDark strong { color: #fff; }
+.rating-line--onDark .stars { color: var(--blue-lt); }
